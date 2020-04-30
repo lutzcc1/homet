@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :meals do
     collection do
-      get 'offered', to: 'meals#offered', as: :meals_offered
+      get 'offered'
     end
     member do
-      get 'eaters', to: 'bookings#eaters', as: :meal_eaters
+      get 'eaters', to: 'bookings#eaters', as: :eaters_for
     end
     resources :bookings, only: :create
     resources :reviews, only: [:index, :create]
