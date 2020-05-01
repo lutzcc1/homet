@@ -8,8 +8,7 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(meal_params)
     if @meal.save
-      # redirect_to meal_path(@meal)
-      true
+      redirect_to meal_path(@meal)
     else
       render :new
     end
@@ -18,10 +17,8 @@ class MealsController < ApplicationController
   def edit; end
 
   def update
-    @meal.update(meal_params)
-    if @meal.save
-      # redirect_to meal_path(@meal)
-      true
+    if @meal.update(meal_params)
+      redirect_to meal_path(@meal)
     else
       render :edit
     end
@@ -29,7 +26,7 @@ class MealsController < ApplicationController
 
   def destroy
     @meal.destroy
-    redirect_to meals_path
+    redirect_to offered_meals_path
   end
 
   private
