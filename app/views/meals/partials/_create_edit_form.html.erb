@@ -1,0 +1,10 @@
+
+  <%= simple_form_for @meal do |f| %>
+        <%= f.input :name, required: true %>
+        <%= f.input :description, required: true %>
+        <%= f.input :price, required: true %>
+        <%= f.input :address, required: true %>
+        <%= f.input :min_eaters, required: true %>
+        <%= f.input :max_eaters, required: true %>
+        <%= f.button :submit %>
+  <% end %>
