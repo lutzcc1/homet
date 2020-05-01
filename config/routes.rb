@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'meals#feature'
+  root to: 'meals#featured'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :meal do
+  resources :meals do
     collection do
-      get 'offered', to: 'meals#offered', as: :meals_offered
+      get 'offered'
     end
     member do
-      get 'eaters', to: 'bookings#eaters', as: :meal_eaters
+      get 'eaters', to: 'bookings#eaters', as: :eaters_for
     end
-    resources :booking, only: :create
-    resources :review, only: [:index, :create]
+    resources :bookings, only: :create
+    resources :reviews, only: [:index, :create]
   end
-  resources :booking, except: [:create, :new]
+  resources :bookings, except: [:create, :new]
 end
