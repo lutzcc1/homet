@@ -1,0 +1,17 @@
+  <h1>Booking Details for <%= @booking.user.name %></h1>
+
+  <br>
+
+  <h2>You and <%= @booking.eaters - 1%> friends will be enjoying <%= @booking.meal.name%>!!!</h2>
+
+  <br>
+
+  <%= link_to 'Edit Booking', edit_booking_path(@booking), class: "btn btn-outline-dark"%>
+
+  <%= link_to "Delete Booking",
+            booking_path(@booking),
+            method: :delete,
+            data: { confirm: "Are you sure?" },
+            class: "btn btn-outline-dark"%>
+
+ <%= link_to 'Back to My Bookings', bookings_path, class: "btn btn-outline-dark"%>

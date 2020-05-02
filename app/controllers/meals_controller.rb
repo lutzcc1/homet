@@ -5,6 +5,10 @@ class MealsController < ApplicationController
     @meals = Meal.all
   end
 
+  def show
+    @meal = Meal.find(params[:id])
+  end
+  
   def new
     @meal = Meal.new()
   end
@@ -32,8 +36,6 @@ class MealsController < ApplicationController
     @meal.destroy
     redirect_to offered_meals_path
   end
-
-
 
   private
 
