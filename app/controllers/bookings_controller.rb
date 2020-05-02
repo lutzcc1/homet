@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_booking, only: %i[show edit update destroy]
 
   def index
@@ -6,7 +7,20 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @meal = Booking.find(params[:id]).meal
     @booking = Booking.find(params[:id])
+  end
+
+  def create
+    @booking = Booking.new(bookings_params)
+    @meal = Meal.find(params[:meal_id])
+    @booking.meal = @meal
+    @booking.user = current_user
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      redirect_to @meal
+    end
   end
 
   def edit
