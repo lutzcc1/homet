@@ -1,6 +1,10 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[edit update destroy]
 
+  def home
+    @meals = Meal.all
+  end
+
   def show
     @meal = Meal.find(params[:id])
   end

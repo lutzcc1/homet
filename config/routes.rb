@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'reviews/create'
   get 'reviews/index'
   devise_for :users
-  root to: 'meals#featured'
+  root to: 'meals#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :meals do
     collection do
