@@ -12,12 +12,12 @@ class ReviewsController < ApplicationController
     @review.meal = @meal
     @review.user = @user
     @review.save
-    redirect_to meal_path(@meal)
-    #  redirect_to bookings? --> This would imply to add booking_id to review DB
+    redirect_to bookings_path
   end
 
   private
   def review_params
-    params.require(:review).permit(:rating, :comment)
+    params.require(:review).permit(:rating, :comment, :meal_id, :user_id)
   end
 end
+
