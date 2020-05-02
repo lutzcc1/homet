@@ -1,9 +1,8 @@
-<%= @meals.each do |meal| %>
+<% @meals.each do |meal| %>
   <div class="meals-card">
-    <div class="meals-card-name"><%= meal.name %></div>
-    <%= meal.description %>
-    <%= meal.price %>
-    <br>
-    <br>
+    <div><%= meal.name %></div>
+    <div><%= meal.description %></div>
+    <div><%= meal.price %></div>
+    <hr>
   </div>
 <% end %>

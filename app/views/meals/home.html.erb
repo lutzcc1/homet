@@ -5,7 +5,7 @@
   <%= form.submit "search" %>
 <% end %>
 
-<%= @meals.each do |meal| %>
+<% @meals.each do |meal| %>
   <div class="meals-card">
     <div class="meals-card-name"><%= meal.name %></div>
     <%= meal.description %>
