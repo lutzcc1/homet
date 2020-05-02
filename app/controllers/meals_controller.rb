@@ -1,6 +1,10 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[edit update destroy]
 
+  def home
+    @meals = Meal.all
+  end
+
   def new
     @meal = Meal.new()
   end
@@ -28,6 +32,8 @@ class MealsController < ApplicationController
     @meal.destroy
     redirect_to offered_meals_path
   end
+
+
 
   private
 
