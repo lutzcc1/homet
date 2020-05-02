@@ -1,14 +1,40 @@
   <div class= "text-center m-5">
-      <h1>Manage my Bookings</h1>
+      <h1>Manage My Bookings</h1>
   </div>
+
+  <h2 class="text-center">Upcoming Bookings</h2>
 
   <div class="d-flex flex-row flex-wrap justify-content-center pb-4">
     <% @bookings.each do |booking| %>
-    <div class="card border-secondary bg-dark color-white ml-3 mr-3 mb-3">
-      <img class="card-img" src="https://source.unsplash.com/286x190/?food, <%= booking.meal.name%>" alt="Card image">
-      <div class="card-img-overlay d-flex align-items-end">
-        <h5 class="card-title text-white"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-white font-weight-bold"%></h5>
+    <%if booking.date > Date.today %>
+      <div class="card border-secondary bg-dark color-white ml-3 mr-3 mb-3">
+        <img class="card-img" src="https://source.unsplash.com/286x190/?food, <%= booking.meal.name%>" alt="Card image">
+        <div class="card-img-overlay d-flex flex-column justify-content-end">
+          <h5 class="card-title text-white"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-white font-weight-bold"%></h5>
+          <p class="card-title text-white"><%= booking.date %></p>
+        </div>
       </div>
-    </div>
+    <%end%>
     <%end%>
   </div>
+
+  <h2 class="text-center">Previous Bookings</h2>
+
+   <div class="d-flex flex-row flex-wrap justify-content-center pb-4">
+    <% @bookings.each do |booking| %>
+    <%if booking.date < Date.today %>
+      <div class="card border-secondary bg-dark color-white ml-3 mr-3 mb-3">
+        <img class="card-img" src="https://source.unsplash.com/286x190/?food, <%= booking.meal.name%>" alt="Card image">
+        <div class="card-img-overlay d-flex flex-column justify-content-end">
+          <h5 class="card-title text-white"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-white font-weight-bold"%></h5>
+          <p class="card-title text-white"><%= booking.date %></p>
+        </div>
+      </div>
+    <%end%>
+    <%end%>
+  </div>
+
+
+
+
+
