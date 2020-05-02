@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def destroy
@@ -29,6 +28,10 @@ class BookingsController < ApplicationController
     @booking.destroy
 
     redirect_to bookings_path
+  end
+
+  def eaters
+    @bookings = Meal.find(params[:id]).bookings
   end
 
   private
@@ -40,5 +43,4 @@ class BookingsController < ApplicationController
   def bookings_params
     params.require(:booking).permit(:date, :eaters, :user_id, :meal_id)
   end
-
 end
