@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @booking.update(bookings_params)
 
-    if @booking.update
+    if @booking.update(booking_params)
       redirect_to bookings_path(@booking)
     else
       render :new
