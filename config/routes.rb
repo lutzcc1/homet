@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'meals/show'
+  get 'reviews/create'
+  get 'reviews/index'
   devise_for :users
   root to: 'meals#featured'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
