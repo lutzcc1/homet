@@ -1,6 +1,6 @@
 <% @meals.each do |meal| %>
   <div class="meals-card">
-    <div><%= meal.name %></div>
+    <div><%= link_to meal.name, eaters_for_meal_path(meal) %></div>
     <div><%= meal.description %></div>
     <div><%= meal.price %></div>
     <hr>
