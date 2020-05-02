@@ -18,7 +18,7 @@
 
     <%if @booking.date < Date.today %>
     <h2 class= "text-center"> Hope you enjoyed the <%= @booking.meal.name%> that <%=@booking.meal.user.name%> prepared for you :) </h2>
-      <% if @booking.meal.reviews.where(user_id:@booking.user.id) %>
+      <% if @booking.meal.reviews.where(user_id:@booking.user.id).exists? %>
         <p class= "text-center"> Your rating of this experience: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.rating %> </p>
         <p class= "text-center"> Your comments: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.comment %> </p>
       <% else %>
