@@ -15,18 +15,19 @@
   </div>
 
 
-
 </div>
 
-<%= form_tag search_path, method: :get do %>
-<%= text_field_tag :search, params[:search], placeholder: "What do you want to eat?", class: "form-control" %>
-<%= text_field_tag :date, params[:date], placeholder: "Date", class: "form-control" %>
+<%#= form_tag root_path, method: :get do %>
+<%#= text_field_tag :search, params[:search], placeholder: "What do you want to eat?", class: "form-control" %>
+<%#= text_field_tag :date, params[:date], placeholder: "Date", class: "form-control" %>
+
+<%# end %>
 
  <div class="row">
    <% @meals.each do |meal| %>
      <div class="col-4">
         <div class="meal-card">
-          <div class= "meal-card-image" style="background-image: url('<%= meal.https://unsplash.com/photos/J04BD4ysoh8 %>')"></div>
+          <div class= "meal-card-image" style="background-image: url(<%= 'meal.https://unsplash.com/photos/J04BD4ysoh8' %>)"></div>
           <div class= "meal-card-content">
             <div class="meal-card-title">
               <h4><%= meal.name %></h4>
@@ -45,14 +46,16 @@
             </div>
           </div>
           <div class="meal-card-actions">
-            <%= link_to 'More info', meal_path(@meal) %>
+            <%= link_to 'More info', meal_path(meal) %>
           </div>
         <% end %>
+
 </div>
 
 
-
-
 <p>© <%= Date.today.year %> Homet.</p>
+
+
+
 
 
