@@ -12,9 +12,9 @@
   <div class="d-flex flex-row flex-wrap justify-content-center pb-4">
     <% @bookings.each do |booking| %>
     <div class="card border-secondary bg-dark color-white ml-3 mr-3 mb-3">
-      <img class="card-img" src="https://source.unsplash.com/286x190/?food" alt="Card image">
+      <img class="card-img" src="https://source.unsplash.com/286x190/?food, <%= booking.meal.name%>" alt="Card image">
       <div class="card-img-overlay d-flex align-items-end">
-        <h5 class="card-title text-white"><%= link_to "See Booking Details", booking_path(booking), class: "text-white font-weight-bold"%></h5>
+        <h5 class="card-title text-white"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-white font-weight-bold"%></h5>
       </div>
     </div>
     <%end%>

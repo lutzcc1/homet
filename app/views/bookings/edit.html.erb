@@ -7,7 +7,11 @@
 
 <h1>Make Changes to your booking for <%= @booking.meal.name %></h1>
 
-<%= render 'app/views/bookings/edit_form' %>
+  <%= simple_form_for @booking do |f| %>
+        <%= f.input :date, required: true %>
+        <%= f.input :eaters, required: true %>
+        <%= f.button :submit %>
+  <%end%>
 
 </body>
 </html>
