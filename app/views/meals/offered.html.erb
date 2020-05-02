@@ -1,0 +1,9 @@
+<%= @meals.each do |meal| %>
+  <div class="meals-card">
+    <div class="meals-card-name"><%= meal.name %></div>
+    <%= meal.description %>
+    <%= meal.price %>
+    <br>
+    <br>
+  </div>
+<% end %>
