@@ -13,7 +13,7 @@ class MealsController < ApplicationController
   def offered
     @meals = current_user.meals.all
   end
-
+  
   def new
     @meal = Meal.new()
   end
