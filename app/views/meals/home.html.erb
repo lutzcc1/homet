@@ -4,6 +4,17 @@
       <h1>All our Meals</h1>
     </div>
   </div>
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @flats.count %> flats out of our <%= Flat.count %> on our website.</p>
+      <% else %>
+        <p>All <%= Flat.count %> flats.</p>
+      <% end %>
+    </div>
+  </div>
+
+
 
 </div>
 
@@ -36,6 +47,8 @@
           <div class="meal-card-actions">
             <%= link_to 'More info', meal_path(@meal) %>
           </div>
+        <% end %>
+</div>
 
 
 
@@ -43,4 +56,3 @@
 <p>© <%= Date.today.year %> Homet.</p>
 
 
-<div class="flat-card-image" style="background-image: url('<%= flat.picture_url %>')"></div>
