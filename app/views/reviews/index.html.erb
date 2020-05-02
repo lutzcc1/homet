@@ -1,0 +1,9 @@
+<div class="list-group">
+  <h5 class = "text-secondary">What others have said about <%= @meal.name %>?</h5>
+    <% @meal.reviews.each do |review| %>
+      <div class = "list-group-item">
+        <li>Rating: <%= review.rating %></li>
+        <i class="text-secondary" >"<%= review.comment %>"</i>
+      </div>
+    <% end %>
+</div>
