@@ -3,13 +3,18 @@
     <span class='text text-secondary' ><%= @meal.min_eaters%>-<%= @meal.max_eaters %> Eaters </span><span class=' text text-secondary'> | Hosted by <%= @meal.user_id %></span>
     <h4><%= @meal.description %></h4>
     <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
+    <img class="card-img" src="https://source.unsplash.com/900x400/?food, <%= @meal.name%>" alt="Card image">
       <div>
         <li><%= link_to 'Back', meals_url %></li>
           <br>
             <div class="card">
               <div class="card-body">
-                Book now!
-                <%= render 'booking_form', meal: @meal, booking: @booking %>
+                <% if user_signed_in? && @booking.user == current_user %>
+                  <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
+                <% else  %>
+                  Book now!
+                  <%=  render 'booking_form' %>
+                <% end %>
               </div>
             </div>
             <br>
@@ -24,3 +29,4 @@
             </div>
       </div>
 </div>
+

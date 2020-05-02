@@ -1,0 +1,7 @@
+<% @bookings.each do |booking| %>
+    <div>Meal: <%= booking.meal.name %></div>
+    <div>Date: <%= booking.date %></div>
+    <div>Attendants: <%= booking.eaters %></div>
+    <div>Reservation name: <%= booking.user.name %></div>
+    <hr>
+<% end %>
