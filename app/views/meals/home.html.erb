@@ -1,19 +1,60 @@
-<h1>HomePage</h1>
-
-<%= form_with do |form| %>
-  <%= form.text_field :search, placeholder: "What do you want to eat?", class: "form-control" %>
-  <%= form.submit "search" %>
-<% end %>
-
-<% @meals.each do |meal| %>
-  <div class="meals-card">
-    <div class="meals-card-name"><%= link_to meal.name, meal_path(meal) %></div>
-    <%= meal.description %>
-    <%= meal.price %>
-    <br>
-    <br>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Meals</h1>
+    </div>
   </div>
-<% end %>
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> flats out of our <%= Meal.count %> on our website.</p>
+      <% else %>
+        <p>All <%= Meal.count %> meals.</p>
+      <% end %>
+    </div>
+  </div>
 
+
+</div>
+
+<%#= form_tag root_path, method: :get do %>
+<%#= text_field_tag :search, params[:search], placeholder: "What do you want to eat?", class: "form-control" %>
+<%#= text_field_tag :date, params[:date], placeholder: "Date", class: "form-control" %>
+
+<%# end %>
+
+ <div class="row">
+   <% @meals.each do |meal| %>
+     <div class="col-4">
+        <div class="meal-card">
+          <div class= "meal-card-image" style="background-image: url(<%= 'meal.https://unsplash.com/photos/J04BD4ysoh8' %>)"></div>
+          <div class= "meal-card-content">
+            <div class="meal-card-title">
+              <h4><%= meal.name %></h4>
+            </div>
+            <p><%= meal.address %></p>
+            <div class="flex">
+              <div class="flex">
+                <i class="material-icons mr-2">eater</i><span><%= meal.max_eaters %></span>
+              </div>
+              <div class="flex">
+                <i class="material-icons mr-2">eater</i><span><%= meal.min_eaters %></span>
+              </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">dollar_symbol</i> <%= meal.price %>
+              </div>
+            </div>
+          </div>
+          <div class="meal-card-actions">
+            <%= link_to 'More info', meal_path(meal) %>
+          </div>
+        <% end %>
+
+</div>
 
 <p>© <%= Date.today.year %> Homet.</p>
+
+
+
+
+
