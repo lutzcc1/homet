@@ -9,8 +9,11 @@
           <br>
             <div class="card">
               <div class="card-body">
-                <% if user_signed_in? && @booking.user == current_user %>
+                <% case %>
+                <% when user_signed_in? && @booking.user == current_user %>
                   <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
+                <% when user_signed_in? && @booking.user && @meal.user == current_user %>
+                  <p> You are the owner of this meal. <%= link_to 'See bookings', eaters_for_meal_path(@meal) %></p>
                 <% else  %>
                   Book now!
                   <%=  render 'booking_form' %>
