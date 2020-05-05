@@ -6,7 +6,6 @@
     <%if @booking.date > Date.today %>
       <h2 class= "text-center">You and <%= @booking.eaters - 1%> friends will be enjoying <%= @booking.meal.name%> on <%= @booking.date%>!</h2>
       <h4 class= "text-center">To be considerate of your Fooder, if you would like to edit or delete this booking </br> please do so no later than 24 hours before the meal!</h4>
-      <p class= "text-center">Hint! You have <%= (@booking.date - Date.today).to_i %> days left to make any changes :)</p>
         <%= link_to 'Edit Booking', edit_booking_path(@booking, @meal), class: "btn btn-outline-dark m-1"%>
         <%= link_to "Delete Booking",
                 booking_path(@booking),

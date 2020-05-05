@@ -1,6 +1,6 @@
 
-<% open_hr = @meal.open_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
-<% close_hr = @meal.close_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+<% @open_hr = @meal.open_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+<% @close_hr = @meal.close_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
 
 <div class = 'container'>
   <%= simple_form_for [@meal, @booking] do |f| %>
@@ -10,10 +10,10 @@
               default: Time.now.change(hour: 12, min: 00),
               minute_interval: 30,
               time_separator: '',
-              start_hour: open_hr[0].to_i,
-              start_minute: open_hr[1].to_i,
-              end_hour: close_hr[0].to_i,
-              end_minute: close_hr[1].to_i,
+              start_hour: @open_hr[0].to_i,
+              start_minute: @open_hr[1].to_i,
+              end_hour: @close_hr[0].to_i,
+              end_minute: @close_hr[1].to_i,
               ampm: true
           %>
     <%= f.input :eaters, collection: ((@meal.min_eaters)..(@meal.max_eaters)).to_a %>

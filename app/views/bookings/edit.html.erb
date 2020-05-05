@@ -1,2 +1,4 @@
 <h1>Make Changes to your booking for <%= @booking.meal.name %></h1>
- <%= render 'bookings/partials/new_edit_form' %>
+  <% @open_hr = @booking.meal.open_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+  <% @close_hr = @booking.meal.close_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+  <%= render 'bookings/partials/new_edit_form' %>
