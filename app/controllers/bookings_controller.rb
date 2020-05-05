@@ -55,6 +55,7 @@ class BookingsController < ApplicationController
   end
 
   def bookings_params
+    params[:booking][:date] = DateTime.parse("#{params[:booking][:date]} #{params[:booking]['time(5i)']}")
     params.require(:booking).permit(:date, :eaters, :user_id, :meal_id)
   end
 end
