@@ -6,5 +6,5 @@ class Meal < ApplicationRecord
   validates :name, :address, :description, :price, :min_eaters, :max_eaters, presence: true
   # name uniquenes commented to allow db:seed to create mock records
   # validates :name, uniqueness: true
-  serialize :open_days
+  serialize :open_days, Array
 end
