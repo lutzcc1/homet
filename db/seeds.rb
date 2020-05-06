@@ -27,7 +27,10 @@ puts 'creating meals...'
     address: Faker::Address.full_address,
     min_eaters: rand(1..2),
     max_eaters:rand(2..10),
-    user_id: rand(1..50)
+    user_id: rand(1..50),
+    open_hrs: Faker::Time.forward(days: 30, period: :morning).strftime("%k:%M"),
+    close_hrs: Faker::Time.forward(days: 30, period: :evening).strftime("%k:%M"),
+    open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun']
     )
 }
 
@@ -38,7 +41,7 @@ puts 'creating bookings & reviews...'
   user = rand(1..50)
   meal = rand(1..150)
     Booking.create!(
-      date: Faker::Date.forward(days: 30),
+      date: Faker::Time.forward(days: 30),
       eaters: rand(2..5),
       user_id: user,
       meal_id: meal
