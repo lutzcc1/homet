@@ -1,6 +1,5 @@
-require 'byebug'
 class MealsController < ApplicationController
-  before_action :set_meal, only: %i[edit update destroy]
+  before_action :set_meal, only: %i[edit update destroy show]
 
 
   def home
@@ -23,6 +22,7 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
 
+    @meal_owner = @meal.user
     if @meal.bookings.where(user: current_user).empty?
       @booking = Booking.new
     else
@@ -40,8 +40,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-
-    @meal.user_id = params[:user_id] # is there a better way to do this?
+    @meal.user = current_user
     if @meal.save
       redirect_to meal_path(@meal)
     else
@@ -72,7 +71,18 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :price, :address, :min_eaters, :max_eaters)
+    params[:meal].parse_time_select! :open_hrs
+    params[:meal].parse_time_select! :close_hrs
+    params.require(:meal).permit(:name,
+                                 :description,
+                                 :price,
+                                 :address,
+                                 :min_eaters,
+                                 :max_eaters,
+                                 :open_hrs,
+                                 :close_hrs,
+                                 open_days: []
+                                 )
   end
 end
 

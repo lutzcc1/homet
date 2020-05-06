@@ -8,4 +8,5 @@ class Meal < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
   # name uniquenes commented to allow db:seed to create mock records
   # validates :name, uniqueness: true
+  serialize :open_days, Array
 end

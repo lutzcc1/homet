@@ -29,6 +29,9 @@ gem 'devise'
 gem 'faker'
 gem 'geocoder'
 
+# to handle the 'open hours' selection feature
+gem "combined_time_select", "~> 2.0.0"
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
