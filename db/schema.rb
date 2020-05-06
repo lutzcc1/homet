@@ -36,11 +36,11 @@ ActiveRecord::Schema.define(version: 2020_05_05_191549) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "latitude"
-    t.float "longitude"
     t.time "open_hrs"
     t.time "close_hrs"
     t.text "open_days"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
