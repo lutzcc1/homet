@@ -1,25 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>All our Meals</h1>
-    </div>
+<div class="d-flex flex-column align-items-center justify-content-center m-5">
+  <h1>All our Meals</h1>
+</div>
 
-    <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class: "form-control" %>
-    <%#= text_field_tag :price, params[:price], placeholder: "Price", class: "form-control" %>
-    <input type = "submit">
-    <% end %>
+<div class="d-flex flex-column align-items-center justify-content-center m-5>
+  <%= form_tag root_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class: "form-control" %>
+  <%#= text_field_tag :price, params[:price], placeholder: "Price", class: "form-control" %>
+  <input type = "submit">
+  <% end %>
+  </div>
 
-  <div class="row">
-    <div class="col">
+<div class="d-flex flex-column align-items-center justify-content-center m-5">
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> meals out of our <%= Meal.count %> on our website.</p>
       <% else %>
         <p>All <%= Meal.count %> meals.</p>
       <% end %>
-    </div>
-  </div>
-
 </div>
 
 
