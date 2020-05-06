@@ -82,7 +82,8 @@ class MealsController < ApplicationController
                                  :max_eaters,
                                  :open_hrs,
                                  :close_hrs,
-                                 open_days: []
+                                 open_days: [],
+                                  photos: []
                                  )
   end
 end

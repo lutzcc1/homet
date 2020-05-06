@@ -4,7 +4,9 @@
     <h4><%= @meal.description %></h4>
     <li class='text-secondary'> From <%= @meal.open_hrs %> to <%= @meal.close_hrs %> during <%= @meal.open_days %></li>
     <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
-    <img class="card-img" src="https://source.unsplash.com/900x400/?food, <%= @meal.name%>" alt="Card image">
+        <% @meal.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :lfill, class: 'card-img' %>
+        <% end %>
       <div>
         <li><%= link_to 'Back', meals_url %></li>
           <br>
