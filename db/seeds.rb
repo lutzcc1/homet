@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require "open-uri"
 
 puts 'creating users...'
 50.times {
@@ -35,6 +36,15 @@ puts 'creating meals...'
 }
 
 puts 'meals created'
+
+puts 'adding photos to meals'
+
+Meal.all.each do |meal|
+  file = URI.open('https://source.unsplash.com/286x190/?food')
+  meal.photo.attach(io: file, filename: 'meal.png', content_type: 'image/png')
+end
+
+puts 'photos added to meals'
 
 puts 'creating bookings & reviews...'
 100.times {
