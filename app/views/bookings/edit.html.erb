@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Edit Booking</title>
-</head>
-<body>
-
 <h1>Make Changes to your booking for <%= @booking.meal.name %></h1>
-
-  <%= simple_form_for @booking do |f| %>
-        <%= f.input :date, required: true %>
-        <%= f.input :eaters, required: true %>
-        <%= f.button :submit %>
-  <%end%>
-
-</body>
-</html>
+  <% @open_hr = @booking.meal.open_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+  <% @close_hr = @booking.meal.close_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+  <%= render 'bookings/partials/new_edit_form' %>
