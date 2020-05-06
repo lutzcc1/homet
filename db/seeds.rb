@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'open-uri'
 
 puts 'creating users...'
 50.times {
@@ -32,6 +33,7 @@ puts 'creating meals...'
     close_hrs: Faker::Time.forward(days: 30, period: :evening).strftime("%k:%M"),
     open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun']
     )
+  ## src="https://source.unsplash.com/286x190/?food"
 }
 
 puts 'meals created'
