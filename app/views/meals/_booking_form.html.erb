@@ -1,6 +1,6 @@
 
-<% @open_hr = @meal.open_hrs.to_s.scan(/\d\d:\d\d/).split(':')[0] %>
-<% @close_hr = @meal.close_hrs.to_s.scan(/\d\d:\d\d/).split(':')[0] %>
+<% @open_hr = @meal.open_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
+<% @close_hr = @meal.close_hrs.to_s.scan(/\d\d:\d\d/)[0].split(':') %>
 
 <div class = 'container'>
   <%= simple_form_for [@meal, @booking] do |f| %>
