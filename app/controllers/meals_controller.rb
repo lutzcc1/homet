@@ -2,7 +2,13 @@ class MealsController < ApplicationController
   before_action :set_meal, only: %i[edit update destroy show]
 
   def home
-    @meals = Meal.all
+    if not params[:search].blank?
+      @meals = Meal.where(" name ilike '%#{params[:search]}%'")
+      @query = params[:search]
+    else
+      @query = nil
+      @meals = Meal.all
+    end
   end
 
 

@@ -3,28 +3,29 @@
     <div class="col">
       <h1>All our Meals</h1>
     </div>
-  </div>
+
+    <%= form_tag root_path, method: :get do %>
+    <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class: "form-control" %>
+    <%#= text_field_tag :price, params[:price], placeholder: "Price", class: "form-control" %>
+    <input type = "submit">
+    <% end %>
+
   <div class="row">
     <div class="col">
       <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> flats out of our <%= Meal.count %> on our website.</p>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> meals out of our <%= Meal.count %> on our website.</p>
       <% else %>
         <p>All <%= Meal.count %> meals.</p>
       <% end %>
     </div>
   </div>
 
-
 </div>
 
-<%#= form_tag root_path, method: :get do %>
-<%#= text_field_tag :search, params[:search], placeholder: "What do you want to eat?", class: "form-control" %>
-<%#= text_field_tag :date, params[:date], placeholder: "Date", class: "form-control" %>
 
-<%# end %>
 
- <div class="row">
-   <% @meals.each do |meal| %>
+  <div class='container' style='list-style-type:none'>
+    <% @meals.each do |meal| %>
      <div class="col">
         <div class="meal-card">
           <div class= "meal-card-image" style="background-image: url(<%= 'meal.https://unsplash.com/photos/J04BD4ysoh8' %>)"></div>
