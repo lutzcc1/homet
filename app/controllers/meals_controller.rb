@@ -1,19 +1,27 @@
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[edit update destroy show]
 
+
   def home
     if not params[:search].blank?
-      @meals = Meal.where(" name ilike '%#{params[:search]}%'")
+      @meals = Meal.where(" name ilike ?","'%#{params[:search]}%'")
       @query = params[:search]
     else
       @query = nil
-      @meals = Meal.all
+      @meals = Meal.geocoded
+      @markers = @meals.map do |meal|
+        {lat: meal.latitude,
+         lng: meal.longitude,
+         infoWindow: render_to_string(partial: "info_window", locals: { meal: meal })
+       }
+      end
     end
   end
 
 
   def show
     @meal = Meal.find(params[:id])
+
     @meal_owner = @meal.user
     if @meal.bookings.where(user: current_user).empty?
       @booking = Booking.new
@@ -40,7 +48,8 @@ class MealsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @meal.update(meal_params)
@@ -76,3 +85,4 @@ class MealsController < ApplicationController
                                  )
   end
 end
+

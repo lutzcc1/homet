@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
@@ -27,6 +27,7 @@ gem 'devise'
 
 # for mock DB
 gem 'faker'
+gem 'geocoder'
 
 # to handle the 'open hours' selection feature
 gem "combined_time_select", "~> 2.0.0"
