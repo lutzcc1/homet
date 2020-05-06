@@ -2,15 +2,17 @@
   <h1>All our Meals</h1>
 </div>
 
-<div class="container">
+<div class="container align-items-center">
   <%= form_tag root_path, method: :get do %>
   <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class: "form-control" %>
   <%#= text_field_tag :price, params[:price], placeholder: "Price", class: "form-control" %>
+  <div class="d-flex flex-column align-items-center m-3">
   <input type="submit">
+  </div>
   <% end %>
   </div>
 
-<div class="d-flex flex-column align-items-center justify-content-center m-5">
+<div class="d-flex flex-column align-items-center m-5">
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> meals out of our <%= Meal.count %> on our website.</p>
       <% else %>
@@ -20,33 +22,19 @@
 
 
 
-<div class="d-flex flex-column ">
+<div class="canvas">
+  <div id="meals">
     <% @meals.each do |meal| %>
-     <div class="col">
-        <div class="meal-card">
-          <div class= "meal-card-image" style="background-image: url(<%= 'meal.https://unsplash.com/photos/J04BD4ysoh8' %>)"></div>
-          <div class= "meal-card-content">
-            <div class="meal-card-title">
-              <h4><%= meal.name %></h4>
-            </div>
-            <p><%= meal.address %></p>
-            <div class="flex">
-              <div class="flex">
-                <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
-              </div>
-              <div class="flex">
-                <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
-              </div>
-              <div class="flex">
-                <i class="material-icons mr-2">$</i> <%= meal.price %>
-              </div>
-            </div>
-          </div>
-          <div class="meal-card-actions">
-            <%= link_to 'More info', meal_path(meal) %>
-          </div>
-        <% end %>
+      <h4><%= meal.name %></h4>
+      <p><%= meal.address %></p>
+      <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>              <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
+      <i class="material-icons mr-2">$</i> <%= meal.price %>
+      <div class="meal-card-actions">
+      <%= link_to 'More info', meal_path(meal) %>
+      </div>
   </div>
+  <% end %>
+</div>
 
 <div
 id="map"
