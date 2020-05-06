@@ -2,19 +2,27 @@ require 'byebug'
 class MealsController < ApplicationController
   before_action :set_meal, only: %i[edit update destroy]
 
+
   def home
     if not params[:search].blank?
-      @meals = Meal.where(" name ilike '%#{params[:search]}%'")
+      @meals = Meal.where(" name ilike ?","'%#{params[:search]}%'")
       @query = params[:search]
     else
       @query = nil
-      @meals = Meal.all
+      @meals = Meal.geocoded
+      @markers = @meals.map do |meal|
+        {lat: meal.latitude,
+         lng: meal.longitude,
+         infoWindow: render_to_string(partial: "info_window", locals: { meal: meal })
+       }
+      end
     end
   end
 
 
   def show
     @meal = Meal.find(params[:id])
+
     if @meal.bookings.where(user: current_user).empty?
       @booking = Booking.new
     else
@@ -32,6 +40,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
+
     @meal.user_id = params[:user_id] # is there a better way to do this?
     if @meal.save
       redirect_to meal_path(@meal)
@@ -40,7 +49,8 @@ class MealsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @meal.update(meal_params)
@@ -65,3 +75,4 @@ class MealsController < ApplicationController
     params.require(:meal).permit(:name, :description, :price, :address, :min_eaters, :max_eaters)
   end
 end
+
