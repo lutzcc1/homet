@@ -14,10 +14,11 @@
               <div class="card-body">
                 <% if user_signed_in? && @meal_owner == current_user %>
                   <p> You are the owner of this meal. <%= link_to 'See bookings', eaters_for_meal_path(@meal) %></p>
-                <% elsif user_signed_in? && @booking.user == current_user %>
+                <% elsif user_signed_in? && @booking.user == current_user && @booking.date > Date.today %>
                   <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
                 <% else  %>
                   <p> Book now! </p>
+                  <% @booking = Booking.new %>
                   <%=  render 'booking_form' %>
                 <% end %>
               </div>
