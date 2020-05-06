@@ -1,5 +1,4 @@
 class MealsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_meal, only: %i[edit update destroy show]
 
   def home
