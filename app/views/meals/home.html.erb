@@ -24,15 +24,20 @@
 
 <div class="canvas">
   <div id="meals">
+
     <% @meals.each do |meal| %>
-      <h4><%= meal.name %></h4>
+    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
+    <img><%= meal.photos %></div>
+     <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
-      <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>              <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
+      <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
+      <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
       <i class="material-icons mr-2">$</i> <%= meal.price %>
       <div class="meal-card-actions">
       <%= link_to 'More info', meal_path(meal) %>
       </div>
   </div>
+
   <% end %>
 </div>
 
