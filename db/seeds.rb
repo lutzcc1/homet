@@ -28,7 +28,7 @@ puts 'creating meals...'
     address: Faker::Address.full_address,
     min_eaters: rand(1..2),
     max_eaters:rand(2..10),
-    user_id: rand(1..50),
+    user_id: rand(1..15),
     open_hrs: Faker::Time.forward(days: 30, period: :morning),
     close_hrs: Faker::Time.forward(days: 30, period: :evening),
     open_days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].sample(3)
