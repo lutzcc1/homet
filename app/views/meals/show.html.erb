@@ -2,23 +2,22 @@
   <h2 class = 'mt-3'><%= @meal.name %></h2>
     <span class='text text-secondary' ><%= @meal.min_eaters%>-<%= @meal.max_eaters %> Eaters </span><span class=' text text-secondary'> | Hosted by <%= @meal.user_id %></span>
     <h4><%= @meal.description %></h4>
-    <li class='text-secondary'> From <%= @meal.open_hrs.hour%> to <%= @meal.close_hrs.hour %> during <%= @meal.open_days[0] %>s, <%= @meal.open_days[1]%>s, and <%= @meal.open_days[2] %>s</li>
+    <li class='text-secondary'> From <%= @meal.open_hrs.strftime('%k:%M') %> to <%= @meal.close_hrs.strftime('%k:%M') %> during <%= @meal.open_days[0] %>s, <%= @meal.open_days[1]%>s, and <%= @meal.open_days[2] %>s</li>
     <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
         <% @meal.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 755, width: 966, crop: :lfill, class: 'card-img' %>
         <% end %>
       <div>
-        <li><%= link_to 'Back', meals_url %></li>
+        <li><%= link_to 'Back', root_path %></li>
           <br>
             <div class="card">
               <div class="card-body">
                 <% if user_signed_in? && @meal_owner == current_user %>
                   <p> You are the owner of this meal. <%= link_to 'See bookings', eaters_for_meal_path(@meal) %></p>
-                <% elsif user_signed_in? && @booking.user == current_user && @booking.date > Date.today %>
+                <% elsif user_signed_in? && @booking.user == current_user %>
                   <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
                 <% else  %>
                   <p> Book now! </p>
-                  <% @booking = Booking.new %>
                   <%=  render 'booking_form' %>
                 <% end %>
               </div>
