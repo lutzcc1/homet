@@ -5,7 +5,7 @@
     <li class='text-secondary'> From <%= @meal.open_hrs.hour%> to <%= @meal.close_hrs.hour %> during <%= @meal.open_days[0] %>s, <%= @meal.open_days[1]%>s, and <%= @meal.open_days[2] %>s</li>
     <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
         <% @meal.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :lfill, class: 'card-img' %>
+          <%= cl_image_tag photo.key, height: 755, width: 966, crop: :lfill, class: 'card-img' %>
         <% end %>
       <div>
         <li><%= link_to 'Back', meals_url %></li>
