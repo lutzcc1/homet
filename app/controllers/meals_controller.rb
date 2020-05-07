@@ -8,14 +8,14 @@ class MealsController < ApplicationController
       @query = params[:search]
     else
       @query = nil
-      @meals = Meal.all
-      #@meals = Meal.geocoded
-      #@markers = @meals.map do |meal|
-        #{lat: meal.latitude,
-         #lng: meal.longitude,
-         #infoWindow: render_to_string(partial: "info_window", locals: { meal: meal })
-       #}
-      #end
+      #@meals = Meal.all
+      @meals = Meal.geocoded
+      @markers = @meals.map do |meal|
+        {lat: meal.latitude,
+         lng: meal.longitude,
+         infoWindow: render_to_string(partial: "info_window", locals: { meal: meal })
+       }
+      end
     end
   end
 
