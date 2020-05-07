@@ -39,9 +39,9 @@ meal_list.each do |name, address, picture|
       min_eaters: rand(1..2),
       max_eaters:rand(2..10),
       user_id: rand(1..10),
-      open_hrs: Faker::Time.forward(days: 30, period: :morning).strftime("%k:%M"),
-      close_hrs: Faker::Time.forward(days: 30, period: :evening).strftime("%k:%M"),
-      open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'].sample(4)
+      open_hrs: ['8:00', '8:30', '9:00', '9:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30'].sample,
+      close_hrs: ['13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30', '18:00', '18:30', '19:00'].sample,
+      open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'].sample(rand(1..7))
       )
   file = URI.open(picture.to_s)
   meal.photos.attach(io: file, filename: 'meal.png', content_type: 'image/png')
