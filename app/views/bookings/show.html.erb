@@ -1,11 +1,12 @@
   <div class="d-flex flex-column align-items-center justify-content-center m-5">
-    <h1 class= "text-center">Booking Details for <%= @booking.user.name %></h1>
+    <h1 class= "text-center">Booking Details for <%= current_user.name %></h1>
 
     <br>
 
     <%if @booking.date > Date.today %>
       <h2 class= "text-center">You and <%= @booking.eaters - 1%> friends will be enjoying <%= @booking.meal.name%> on <%= @booking.date%>!</h2>
       <h4 class= "text-center">To be considerate of your Fooder, if you would like to edit or delete this booking </br> please do so no later than 24 hours before the meal!</h4>
+      <%= cl_image_tag @booking.meal.photos.first.key, height: 755, width: 966, crop: :fit, class: 'card-img m-4' %>
         <%= link_to 'Edit Booking', edit_booking_path(@booking), class: "btn btn-outline-dark m-1"%>
         <%= link_to "Delete Booking",
                 booking_path(@booking),
@@ -21,10 +22,11 @@
         <p class= "text-center"> Your rating of this experience: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.rating %> </p>
         <p class= "text-center"> Your comments: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.comment %> </p>
       <% else %>
-      <p class= "text-center"> Please leave a review for <%=@booking.meal.user.name%> so they know how good their good was or how it could be better!</p>
+      <p class= "text-center"> Please leave a review for <%=@booking.meal.user.name%> so they know how good their food was or how it could be better!</p>
         <%=  render 'review_form' %>
       <%end%>
     <%end%>
 
    <%= link_to 'Back to My Bookings', bookings_path, class: "btn btn-outline-dark m-1"%>
+   <%= link_to 'Back to Browsing', root_path, class: "btn btn-outline-dark m-1"%>
 </div>
