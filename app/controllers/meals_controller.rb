@@ -1,4 +1,5 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :home]
   before_action :set_meal, only: %i[edit update destroy show]
 
 
