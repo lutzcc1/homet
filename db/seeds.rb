@@ -1,7 +1,7 @@
 require 'faker'
 require "open-uri"
 
-puts 'creating users...
+puts 'creating users...'
 10.times {
   User.create!(
     name: Faker::Name.name,
@@ -42,7 +42,7 @@ meal_list.each do |name, address, picture|
       open_hrs: Faker::Time.forward(days: 30, period: :morning).strftime("%k:%M"),
       close_hrs: Faker::Time.forward(days: 30, period: :evening).strftime("%k:%M"),
       open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'].sample(4)
-
+      )
   file = URI.open(picture.to_s)
   meal.photos.attach(io: file, filename: 'meal.png', content_type: 'image/png')
 end
@@ -97,8 +97,8 @@ puts '2nd additional photo, done'
 
 puts 'creating bookings & reviews...'
 30.times {
-  user = rand(1..15)
-  meal = rand(1..25)
+  user = rand(1..10)
+  meal = rand(1..15)
     Booking.create!(
       date: Faker::Time.forward(days: 30),
       eaters: rand(2..5),
