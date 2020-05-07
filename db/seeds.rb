@@ -9,7 +9,7 @@ require 'faker'
 require "open-uri"
 
 puts 'creating users...'
-50.times {
+15.times {
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -20,7 +20,7 @@ puts 'creating users...'
 puts 'users created'
 
 puts 'creating meals...'
-150.times {
+25.times {
   Meal.create!(
     name: Faker::Food.dish,
     description: Faker::Food.description,
@@ -28,10 +28,10 @@ puts 'creating meals...'
     address: Faker::Address.full_address,
     min_eaters: rand(1..2),
     max_eaters:rand(2..10),
-    user_id: rand(1..50),
-    open_hrs: Faker::Time.forward(days: 30, period: :morning).strftime("%k:%M"),
-    close_hrs: Faker::Time.forward(days: 30, period: :evening).strftime("%k:%M"),
-    open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun']
+    user_id: rand(1..15),
+    open_hrs: Faker::Time.forward(days: 30, period: :morning),
+    close_hrs: Faker::Time.forward(days: 30, period: :evening),
+    open_days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].sample(3)
     )
 }
 
@@ -40,16 +40,16 @@ puts 'meals created'
 puts 'adding photos to meals'
 
 Meal.all.each do |meal|
-  file = URI.open('https://source.unsplash.com/286x190/?food')
-  meal.photo.attach(io: file, filename: 'meal.png', content_type: 'image/png')
+  file = URI.open("https://giantbomb1.cbsistatic.com/uploads/original/9/99864/2419866-nes_console_set.png")
+  meal.photos.attach(io: file, filename: 'meal.png', content_type: 'image/png')
 end
 
 puts 'photos added to meals'
 
 puts 'creating bookings & reviews...'
-100.times {
-  user = rand(1..50)
-  meal = rand(1..150)
+30.times {
+  user = rand(1..15)
+  meal = rand(1..25)
     Booking.create!(
       date: Faker::Time.forward(days: 30),
       eaters: rand(2..5),

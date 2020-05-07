@@ -2,7 +2,7 @@
   <h2 class = 'mt-3'><%= @meal.name %></h2>
     <span class='text text-secondary' ><%= @meal.min_eaters%>-<%= @meal.max_eaters %> Eaters </span><span class=' text text-secondary'> | Hosted by <%= @meal.user_id %></span>
     <h4><%= @meal.description %></h4>
-    <li class='text-secondary'> From <%= @meal.open_hrs %> to <%= @meal.close_hrs %> during <%= @meal.open_days %></li>
+    <li class='text-secondary'> From <%= @meal.open_hrs.hour%> to <%= @meal.close_hrs.hour %> during <%= @meal.open_days[0] %>s, <%= @meal.open_days[1]%>s, and <%= @meal.open_days[2] %>s</li>
     <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
         <% @meal.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :lfill, class: 'card-img' %>

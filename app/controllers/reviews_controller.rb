@@ -8,9 +8,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @meal = Meal.find(params[:meal_id])
-    @user = User.find(params[:user_id])
     @review.meal = @meal
-    @review.user = @user
+    @review.user = current_user
     @review.save
     redirect_to bookings_path
   end
