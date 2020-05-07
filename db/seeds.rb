@@ -1,7 +1,7 @@
 require 'faker'
 require "open-uri"
 
-puts 'creating users...'
+puts 'creating users...
 10.times {
   User.create!(
     name: Faker::Name.name,
@@ -9,11 +9,9 @@ puts 'creating users...'
     password: 'tenoch'
     )
 }
-
 puts 'users created'
 
 puts 'creating meals & related picture...'
-
 meal_list = [
   ['Mezcal Tasting and Great Food in Roma', 'Orizaba 113, Col. Roma. CDMX', 'https://travesiasdigital.com/wp-content/uploads/2019/01/mezcal-header.jpg'],
   ['Brunch at Polanco Terrace', 'Av. Emilio Castelar 135, Polanco. CDMX', 'https://decoracion2.com/imagenes/2019/03/ideas-para-convertir-tu-terraza-en-un-auntentico-oasis-15.jpg'],
@@ -44,15 +42,13 @@ meal_list.each do |name, address, picture|
       open_hrs: Faker::Time.forward(days: 30, period: :morning).strftime("%k:%M"),
       close_hrs: Faker::Time.forward(days: 30, period: :evening).strftime("%k:%M"),
       open_days: ['Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat', 'Sun'].sample(4)
-    )
+
   file = URI.open(picture.to_s)
   meal.photos.attach(io: file, filename: 'meal.png', content_type: 'image/png')
 end
-
 puts 'meals & related picture created'
 
 puts 'adding 1st additional random photo to meals...'
-
 zoom_in = [
   'https://cdn.forkly.com/eyJidWNrZXQiOiJwdWItc3RvcmFnZSIsImtleSI6ImZvcmtseS93cC1jb250ZW50L3VwbG9hZHMvMjAxNy8wNS9lYXN5LWZpc2gtdGFjb3Mtd2l0aC1saW1lLWNyZW1hLTYuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjo3NDgsImhlaWdodCI6MzkwLCJmaXQiOiJjb3ZlciIsImJhY2tncm91bmQiOnsiciI6MCwiZyI6MCwiYiI6MCwiYWxwaGEiOjF9fX19',
   'https://theinspiredhome.imgix.net/images/Loaded-Mediterranean-Street-Fries-2-2_171003_140630.jpg?fit=clip&q=80&w=850',
@@ -72,12 +68,10 @@ Meal.all.each do |meal|
   file = URI.open(zoom_in.sample.to_s)
   meal.photos.attach(io: file, filename: 'meal1.png', content_type: 'image/png')
 end
-
 puts '1st additional photo, done'
 
 
 puts 'adding 2nd additional random photo to meals...'
-
 zoom_out = [
   'https://cdn.makespace.com/blog/wp-content/uploads/2018/01/05155747/The-Stress-Free-Guide-To-Hosting-Your-First-Dinner-Party-8-Steps-With-Pictures1.jpg',
   'https://media3.s-nbcnews.com/i/newscms/2019_05/2736521/190131-stock-taco-bar-food-ew-1220p_bc7c9fc25ecd393bfa3d7d35f216edfc.jpg',
@@ -98,14 +92,13 @@ Meal.all.each do |meal|
   file = URI.open(zoom_out.sample.to_s)
   meal.photos.attach(io: file, filename: 'meal2.png', content_type: 'image/png')
 end
-
 puts '2nd additional photo, done'
 
 
 puts 'creating bookings & reviews...'
-100.times {
-  user = rand(1..10)
-  meal = rand(1..15)
+30.times {
+  user = rand(1..15)
+  meal = rand(1..25)
     Booking.create!(
       date: Faker::Time.forward(days: 30),
       eaters: rand(2..5),

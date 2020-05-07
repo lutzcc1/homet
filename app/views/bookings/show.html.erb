@@ -21,8 +21,8 @@
         <p class= "text-center"> Your rating of this experience: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.rating %> </p>
         <p class= "text-center"> Your comments: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.comment %> </p>
       <% else %>
-      <p class= "text-center"> Please leave a review for <%=@booking.meal.user.name%> so they know how good their food was or how it could be better!</p>
-        <%= link_to 'Leave a Review', reviews_create_path, class: "btn btn-outline-dark m-1"%>
+      <p class= "text-center"> Please leave a review for <%=@booking.meal.user.name%> so they know how good their good was or how it could be better!</p>
+        <%=  render 'review_form' %
       <%end%>
     <%end%>
 

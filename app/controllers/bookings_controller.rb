@@ -9,6 +9,12 @@ class BookingsController < ApplicationController
   def show
     @meal = Booking.find(params[:id]).meal
     @booking = Booking.find(params[:id])
+
+    if @booking.meal.reviews.where(user: current_user).empty?
+      @review = Review.new
+    else
+      @review = @booking.meal.reviews.where(user: current_user).first
+    end
   end
 
   def create
