@@ -23,7 +23,8 @@ class MealsController < ApplicationController
   def show
     @meal = Meal.find(params[:id])
     @meal_owner = @meal.user
-    if @meal.bookings.where(user: current_user).empty?
+    user_bookings = @meal.bookings.where(user: current_user)
+    if user_bookings.empty? or user_bookings.last.date < Date.today
       @booking = Booking.new
     else
       @booking = @meal.bookings.where(user: current_user).last
