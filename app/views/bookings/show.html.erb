@@ -22,7 +22,7 @@
         <p class= "text-center"> Your comments: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.comment %> </p>
       <% else %>
       <p class= "text-center"> Please leave a review for <%=@booking.meal.user.name%> so they know how good their good was or how it could be better!</p>
-        <%=  render 'review_form' %
+        <%=  render 'review_form' %>
       <%end%>
     <%end%>
 
