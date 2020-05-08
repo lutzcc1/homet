@@ -27,21 +27,21 @@
    <div>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
-      <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
-      <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
-      <i class="material-icons mr-2">$</i> <%= meal.price %>
+      <p><%= meal.min_eaters %> - <%= meal.max_eaters %> eaters</p>
+      <!-- <i class="material-icons"> Min n° of eaters </i><span><%= meal.min_eaters %></span> -->
+      <!-- <i class="material-icons">Max n° of eaters </i><span><%= meal.max_eaters %></span> -->
+      <!-- <i class="material-icons mr-2">$</i> -->
+      <p>$<%= meal.price %></p>
       <div class="meal-card-actions">
       <%= link_to 'More info', meal_path(meal) %>
       </div>
     </div>
+    <% end %>
 </div>
-<% end %>
 
-</div>
 
 <div
 id="map"
-style="height: 600px; width: 100%"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 data-markers="<%= @markers.to_json %>"
 ></div>
