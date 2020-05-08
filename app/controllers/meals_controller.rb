@@ -31,6 +31,22 @@ class MealsController < ApplicationController
     else
       @booking = @meal.bookings.where(user: current_user).last
     end
+
+    @open_days = ""
+    @days = @meal.open_days.length
+    if @days == 1
+      @open_days = "on #{@meal.open_days.first}s"
+    elsif @days == 7
+      @open_days = "everyday"
+    elsif @meal.open_days.sort == ["Friday", "Monday", "Thursday", "Tuesday", "Wednesday"]
+      @open_days = "on weekdays"
+    elsif @meal.open_days.sort == ["Saturday", "Sunday"]
+      @open_days = "on weekends"
+    elsif @meal.open_days.length > 1
+      @last_day = @meal.open_days.last
+      @first_days = @meal.open_days.take(@days - 1) * "s, "
+      @open_days = "on #{@first_days}s and #{@last_day}s"
+    end
   end
 
   def offered
