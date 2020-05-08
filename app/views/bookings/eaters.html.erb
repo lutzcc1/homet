@@ -1,7 +1,11 @@
-<% @bookings.each do |booking| %>
-    <div>Meal: <%= booking.meal.name %></div>
-    <div>Date: <%= booking.date %></div>
-    <div>Attendants: <%= booking.eaters %></div>
-    <div>Reservation name: <%= booking.user.name %></div>
-    <hr>
+<% if @bookings.empty? %>
+  <h1> Oops! No bookings yet! </h1>
+<% else %>
+  <% @bookings.each do |booking| %>
+      <div>Meal: <%= booking.meal.name %></div>
+      <div>Date: <%= booking.date %></div>
+      <div>Attendants: <%= booking.eaters %></div>
+      <div>Reservation name: <%= booking.user.name %></div>
+      <hr>
+  <% end %>
 <% end %>
