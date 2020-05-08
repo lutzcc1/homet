@@ -20,10 +20,13 @@
       <% end %>
 </div>
 
+
 <div class="content">
-  <div class="card">
-    <% @meals.each do |meal| %>
-    <%= cl_image_tag meal.photos.first.key, height: 240, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' if meal.photos.size>0 %>
+<div class="card-container">
+  <% @meals.each do |meal| %>
+  <div class="card" id="meals">
+    <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
+   <div>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
       <p><%= meal.min_eaters %> - <%= meal.max_eaters %> eaters</p>
@@ -34,9 +37,10 @@
       <div class="meal-card-actions">
       <%= link_to 'More info', meal_path(meal) %>
       </div>
+     </div>
     <% end %>
   </div>
-</div>
+
 
 <div
 id="map"
