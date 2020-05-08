@@ -8,9 +8,7 @@
       <h4><%= @meal.description %></h4>
       <li class='text-secondary'> Open <%= @open_days %>, from <%= @meal.open_hrs.strftime('%k:%M') %> to <%= @meal.close_hrs.strftime('%k:%M') %></li>
       <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
-          <% @meal.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, height: 755, width: 966, crop: :lfill, class: 'card-img' %>
-          <% end %>
+          <%= render 'meals/partials/carousel' %>
         <div>
           <li><%= link_to 'Back', root_path %></li>
             <br>
