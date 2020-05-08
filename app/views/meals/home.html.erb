@@ -20,31 +20,26 @@
       <% end %>
 </div>
 
-<div class="canvas">
-
-
-    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
-
-  <div class="container d-flex flex-row justify-content-start align-items-center mb-3 border p-3 rounded border-secondary" id="meals">
+<div class="content">
+  <div class="card">
     <% @meals.each do |meal| %>
-    <%= cl_image_tag meal.photos.first.key, height: 260, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' if meal.photos.size>0 %>
-   <div>
+    <%= cl_image_tag meal.photos.first.key, height: 240, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' if meal.photos.size>0 %>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
-      <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
-      <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
-      <i class="material-icons mr-2">$</i> <%= meal.price %>
+      <p><%= meal.min_eaters %> - <%= meal.max_eaters %> eaters</p>
+      <!-- <i class="material-icons"> Min n° of eaters </i><span><%= meal.min_eaters %></span> -->
+      <!-- <i class="material-icons">Max n° of eaters </i><span><%= meal.max_eaters %></span> -->
+      <!-- <i class="material-icons mr-2">$</i> -->
+      <p>$<%= meal.price %></p>
       <div class="meal-card-actions">
       <%= link_to 'More info', meal_path(meal) %>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
 
 <div
 id="map"
-style="height: 600px; width: 100%"
 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
 data-markers="<%= @markers.to_json %>"
 ></div>

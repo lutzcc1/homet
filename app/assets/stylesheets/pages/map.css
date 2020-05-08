@@ -1,0 +1,35 @@
+/*.content {
+  display: flex;
+}
+
+#map {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+}
+.mapboxgl-popup {
+  max-width: 200px;
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.card {
+  display: grid;
+  grid-template-columns:1fr;
+  padding: 16px;
+  flex-grow: 1;
+}
+
+@media (min-width: 1200px) {
+  .cards { grid-template-columns:1fr;
+
+  }
+
+  #map {
+    display: block;
+  }
+}
+*/
