@@ -1,0 +1,30 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px;
+  margin: 5px;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: between;
+  align-items: center;
+  width: 100%;
+  margin: 5px;
+  background-color: light-gray
+}
+
+.card-image{
+  border-radius: 12px;
+  width: 300px;
+  height: 200px;
+  padding: 6px;
+  margin: 5px
+}
+
+.card-text{
+
+}
