@@ -20,12 +20,9 @@
       <% end %>
 </div>
 
-
-
 <% @meals.each do |meal| %>
 <div class="canvas">
   <div class="container d-flex flex-row justify-content-start align-items-center mb-3 border p-3 rounded border-secondary" id="meals">
-    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
     <%= cl_image_tag meal.photos.first.key, height: 260, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' %>
    <div>
      <h4><%= meal.name %></h4>
