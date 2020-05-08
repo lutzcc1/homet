@@ -13,21 +13,21 @@ puts 'users created'
 
 puts 'creating meals & related picture...'
 meal_list = [
-  ['Mezcal Tasting and Great Food in Roma', 'Orizaba 113, Col. Roma. CDMX', 'https://travesiasdigital.com/wp-content/uploads/2019/01/mezcal-header.jpg'],
+  ['Mezcal Tasting and Great Food in Roma', 'Campeche 233, Hipódromo Condesa, Cuauhtémoc, 06170 Ciudad de México, CDMX', 'https://travesiasdigital.com/wp-content/uploads/2019/01/mezcal-header.jpg'],
   ['Brunch at Polanco Terrace', 'Av. Emilio Castelar 135, Polanco. CDMX', 'https://decoracion2.com/imagenes/2019/03/ideas-para-convertir-tu-terraza-en-un-auntentico-oasis-15.jpg'],
   ['Homemade Tacos al Pastor', 'Durango 187, Roma Norte. CDMX', 'https://dam.cocinafacil.com.mx/wp-content/uploads/2019/04/Trompo-casero.jpg'],
   ['Italy meets Mexico in Polanco', 'Virgilio 40, Polanco. CDMX', 'https://media.timeout.com/images/100451423/image.jpg'],
   ['Authentic Taco Tasting Menu', 'Michoacán 172, Hipódromo Condesa. CDMX', 'https://www.pirateshipvallarta.com/blog/wp-content/uploads/2018/03/recommendations-for-taco-tasting-in-puerto-vallarta.jpg'],
   ['3 Amigos Evening with Amazing Food', 'Paseo de la Reforma 465, Juárez.. CDMX', 'https://www.europassitalian.com/wp-content/uploads/2020/03/Guys-cooking-1600x900.jpg'],
-  ['Family Dinner at Centro de Mexico', 'Isabel la Católica 30, Centro Histórico. CDMX', 'https://cdn.lifehack.org/wp-content/uploads/2018/10/family-dinners.jpeg'],
+  ['Family Dinner at Centro de Mexico', 'Campeche 284, Hipódromo Condesa, Cuauhtémoc, 06100 Ciudad de México, CDMX, CDMX', 'https://cdn.lifehack.org/wp-content/uploads/2018/10/family-dinners.jpeg'],
   ['Mexican Cooking Lessons + Wine', 'Av. Ignacio Allende 3. CDMX', 'https://cdn.shortpixel.ai/spai/w_1163+q_lossy+ret_img/https://beautifuliguria.com/wp-content/uploads/2018/11/cook-dine-genoa2-1920x999.jpg'],
   ['Grandmas Secret Recipes with Modern Twist', 'Calle Isabel la Católica 30. CDMX', 'https://cdn.sunbasket.com/dae22b7b-944f-4183-9108-dd58487ec3f2.jpg'],
-  ['Mexican Basement Dinner with Friends', '5 de Mayo 61, Centro Histórico. CDMX', 'https://insiderotterdam.nl/wp-content/uploads/2018/09/zd0C5hQ-1024x480.jpeg'],
-  ['Tequila Tasting at Pablos Kitchen', 'República de Cuba 96, Centro Histórico. CDMX', 'https://previews.123rf.com/images/rawpixel/rawpixel1711/rawpixel171108696/90706964-group-of-friends-are-cooking-in-the-kitchen.jpg'],
-  ['Wine Paring Meal at Mexican Sommellier Apartment', 'Juárez 70, Centro Histórico. CDMX', 'https://purewows3.imgix.net/images/articles/2019_03/ruffina-wine-bar-ny.jpg?auto=format,compress&cs=strip'],
+  ['Mexican Basement Dinner with Friends', 'Aguascalientes 132, Roma Sur, Cuauhtémoc, 06760 Ciudad de México, CDMX', 'https://insiderotterdam.nl/wp-content/uploads/2018/09/zd0C5hQ-1024x480.jpeg'],
+  ['Tequila Tasting at Pablos Kitchen', 'Av Nuevo León 68, Hipódromo, Cuauhtémoc, 06100 Ciudad de México, CDMX', 'https://previews.123rf.com/images/rawpixel/rawpixel1711/rawpixel171108696/90706964-group-of-friends-are-cooking-in-the-kitchen.jpg'],
+  ['Wine Paring Meal at Mexican Sommellier Apartment', 'Av. Tamaulipas 143, Hipódromo, Cuauhtémoc, 06100 Ciudad de México, CDMX', 'https://purewows3.imgix.net/images/articles/2019_03/ruffina-wine-bar-ny.jpg?auto=format,compress&cs=strip'],
   ['Authentic Mole for Authentic Travellers', '16 de Septiembre 82. CDMX', 'https://media.wsimag.com/attachments/e44f627d934b13a82d9e00d622cb7a590fb8f099/store/fill/1230/692/b396db79aef8f0ed5646b43304dbcaf3e68278e3913bc6f378eefbc8cfb4/Mole.jpg'],
-  ['Beer Tasting and Good Food with Locals', 'Calle República de Argentina 15 Planta Alta. CDMX', 'https://img.grouponcdn.com/deal/rWkQN4AyHpgx3CNpeXb/is-5000x3000/v1/c700x420.jpg'],
-  ['Exquisite Vegan Afternoon with Lou', 'Filomeno Mata 18 Loc. 6 y 7 Altos, Centro Histórico. CDMX', 'https://149366112.v2.pressablecdn.com/wp-content/uploads/2018/10/bowl-4-1067x800.jpg']
+  ['Beer Tasting and Good Food with Locals', 'Campeche 396, Hipódromo Condesa, Cuauhtémoc, 06170 Ciudad de México, CDMX', 'https://img.grouponcdn.com/deal/rWkQN4AyHpgx3CNpeXb/is-5000x3000/v1/c700x420.jpg'],
+  ['Exquisite Vegan Afternoon with Lou', 'Av Nuevo León 188, Hipódromo, Cuauhtémoc, 06100 Ciudad de México, CDMX', 'https://149366112.v2.pressablecdn.com/wp-content/uploads/2018/10/bowl-4-1067x800.jpg']
 ]
 
 meal_list.each do |name, address, picture|
