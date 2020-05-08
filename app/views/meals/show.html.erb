@@ -1,6 +1,6 @@
 <div class='container' style='list-style-type:none'>
     <% if user_signed_in? && @meal_owner == current_user %>
-        <h2 class = 'mt-3'><%= link_to '✎', edit_meal_path(@meal), class: 'text-decoration-none' %>  <%= @meal.name %></h2>
+        <h2 class = 'mt-3'><%= @meal.name %><%= link_to '✎', edit_meal_path(@meal), class: 'text-decoration-none' %></h2>
     <% else %>
       <h2 class = 'mt-3'><%= @meal.name %>%></h2>
     <% end %>
