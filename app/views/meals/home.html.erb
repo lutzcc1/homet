@@ -20,14 +20,14 @@
       <% end %>
 </div>
 
-
-
 <div class="canvas">
+
+
+    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
 
   <div class="container d-flex flex-row justify-content-start align-items-center mb-3 border p-3 rounded border-secondary" id="meals">
     <% @meals.each do |meal| %>
-    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
-    <%= cl_image_tag meal.photos.first.key, height: 260, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' %>
+    <%= cl_image_tag meal.photos.first.key, height: 260, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' if meal.photos.size>0 %>
    <div>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
