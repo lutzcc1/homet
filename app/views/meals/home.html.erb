@@ -22,12 +22,12 @@
 
 
 
+<% @meals.each do |meal| %>
 <div class="canvas">
-  <div id="meals">
-
-    <% @meals.each do |meal| %>
+  <div class="container d-flex flex-row justify-content-between" id="meals">
     <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
-    <img><%= meal.photos %></div>
+    <%= cl_image_tag meal.photos.first.key, height: 755, width: 966, crop: :lfill, class: 'avatar-img' %>
+   <div>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
       <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
@@ -36,10 +36,10 @@
       <div class="meal-card-actions">
       <%= link_to 'More info', meal_path(meal) %>
       </div>
+    </div>
   </div>
-
-  <% end %>
 </div>
+<% end %>
 
 <div
 id="map"
