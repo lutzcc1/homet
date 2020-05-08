@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @review.meal = @meal
     @review.user = current_user
+    authorize @review
     @review.save
     redirect_to bookings_path
   end
