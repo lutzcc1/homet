@@ -2,12 +2,14 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
 
   def index
-    @bookings = current_user.bookings.all
+    @bookings = policy_scope(current_user.bookings.all)
   end
 
   def show
-    @meal = Booking.find(params[:id]).meal
     @booking = Booking.find(params[:id])
+    authorize @booking
+    @meal = Booking.find(params[:id]).meal
+
 
     if @booking.meal.reviews.where(user: current_user).empty?
       @review = Review.new
@@ -18,6 +20,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(bookings_params)
+    authorize @booking
     @meal = Meal.find(params[:meal_id])
     @booking.meal = @meal
     @booking.user = current_user
@@ -30,10 +33,12 @@ class BookingsController < ApplicationController
 
   def edit
     @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
   def update
     @booking = Booking.find(params[:id])
+    authorize @booking
 
     if @booking.update(bookings_params)
       redirect_to booking_path(@booking)
@@ -44,13 +49,14 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
     @booking.destroy
 
     redirect_to bookings_path
   end
 
   def eaters
-    @bookings = Meal.find(params[:id]).bookings
+    @bookings = policy_scope(Meal.find(params[:id]).bookings)
   end
 
   private
