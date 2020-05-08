@@ -1,1 +1,4 @@
-<%= render 'meals/partials/create_edit_form' %>
+
+<% if policy(Meal).create? %>
+  <%= render 'meals/partials/create_edit_form' %>
+<% end %>
