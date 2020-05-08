@@ -26,6 +26,7 @@
   <div id="meals">
 
     <% @meals.each do |meal| %>
+    <%# @meal.photos.each do |photo| %>
     <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
     <img><%= meal.photos %></div>
      <h4><%= meal.name %></h4>
@@ -37,6 +38,7 @@
       <%= link_to 'More info', meal_path(meal) %>
       </div>
   </div>
+  <%# end %>
 
   <% end %>
 </div>
