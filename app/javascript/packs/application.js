@@ -8,7 +8,7 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-// custom JS from the Plan-ET crew 🤘
+// custom JS from the Plan-ET crew! 🤘
 require("custom/carousel")
 
 
