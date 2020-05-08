@@ -16,6 +16,8 @@
                   <p> You are the owner of this meal. <%= link_to 'See bookings', eaters_for_meal_path(@meal) %></p>
                 <% elsif user_signed_in? && @booking.user == current_user %>
                   <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
+                  <p> Book again! </p>
+                  <%=  render 'booking_form' %>
                 <% else  %>
                   <p> Book now! </p>
                   <%=  render 'booking_form' %>
@@ -24,7 +26,7 @@
             </div>
             <br>
             <div class="list-group">
-              <li class = "text-secondary">What have others said about <%= @meal.name %>?</li>
+              <li class = "text-secondary">Check out what others have said about <%= @meal.name %>?</li>
                 <% @meal.reviews.each do |review| %>
                   <div class = "list-group-item">
                     <li>Rating: <%= review.rating %></li>
