@@ -1,14 +1,14 @@
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :home]
   before_action :set_meal, only: %i[edit update destroy show]
-
 
   def home
     if not params[:search].blank?
-      @meals = Meal.where("name ilike?", "%#{params[:search]}%")
+      @meals = policy_scope(Meal.where("name ilike?", "%#{params[:search]}%"))
       @query = params[:search]
     else
       @query = nil
-      @meals = Meal.all
+      @meals = policy_scope(Meal)
       #@meals = Meal.geocoded
       #@markers = @meals.map do |meal|
         #{lat: meal.latitude,
@@ -22,6 +22,7 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find(params[:id])
+    authorize @meal
     @meal_owner = @meal.user
     user_bookings = @meal.bookings.where(user: current_user)
     if user_bookings.empty? or user_bookings.last.date < Date.today
@@ -32,16 +33,18 @@ class MealsController < ApplicationController
   end
 
   def offered
-    @meals = current_user.meals.all
+    @meals = policy_scope(current_user.meals.all)
   end
 
   def new
     @meal = Meal.new()
+    authorize @meal
   end
 
   def create
     @meal = Meal.new(meal_params)
     @meal.user = current_user
+    authorize @meal
     if @meal.save
       redirect_to meal_path(@meal)
     else
@@ -50,9 +53,12 @@ class MealsController < ApplicationController
   end
 
   def edit
+    @meal = Meal.find(params[:id])
+    authorize @meal
   end
 
   def update
+    authorize @meal
     if @meal.update(meal_params)
       redirect_to meal_path(@meal)
     else
@@ -61,6 +67,7 @@ class MealsController < ApplicationController
   end
 
   def destroy
+    authorize @meal
     @meal.destroy
     redirect_to offered_meals_path
   end

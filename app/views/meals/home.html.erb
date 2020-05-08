@@ -20,15 +20,11 @@
       <% end %>
 </div>
 
-
-
+<% @meals.each do |meal| %>
 <div class="canvas">
-  <div id="meals">
-
-    <% @meals.each do |meal| %>
-    <%# @meal.photos.each do |photo| %>
-    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
-    <img><%= meal.photos %></div>
+  <div class="container d-flex flex-row justify-content-start align-items-center mb-3 border p-3 rounded border-secondary" id="meals">
+    <%= cl_image_tag meal.photos.first.key, height: 260, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' %>
+   <div>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
       <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
@@ -37,11 +33,10 @@
       <div class="meal-card-actions">
       <%= link_to 'More info', meal_path(meal) %>
       </div>
+    </div>
   </div>
-  <%# end %>
-
-  <% end %>
 </div>
+<% end %>
 
 <div
 id="map"
