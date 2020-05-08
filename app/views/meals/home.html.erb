@@ -20,14 +20,10 @@
       <% end %>
 </div>
 
-<div class="canvas">
-
-
-    <%#= cl_image_tag @meal.photos.key, height: 300, width: 400, crop: :fill %>
-
-  <div class="container d-flex flex-row justify-content-start align-items-center mb-3 border p-3 rounded border-secondary" id="meals">
-    <% @meals.each do |meal| %>
-    <%= cl_image_tag meal.photos.first.key, height: 260, width: 180, crop: :lfill, class: 'img-thumbnail mr-3 rounded' if meal.photos.size>0 %>
+<div class="card-container">
+  <% @meals.each do |meal| %>
+  <div class="card" id="meals">
+    <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
    <div>
      <h4><%= meal.name %></h4>
       <p><%= meal.address %></p>
@@ -38,8 +34,9 @@
       <%= link_to 'More info', meal_path(meal) %>
       </div>
     </div>
-    <% end %>
-  </div>
+</div>
+<% end %>
+
 </div>
 
 <div
