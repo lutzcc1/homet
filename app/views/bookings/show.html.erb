@@ -6,7 +6,7 @@
       <h1 class = "mb-4">Booking Details for <br> <%= current_user.name %></h1>
 
       <%if @booking.date > Date.today %>
-        <h2 class = "mb-4">You and <%= @booking.eaters - 1%> friends will be enjoying <%= @booking.meal.name%> on <%= @booking.date.strftime("%B %e, %Y")%>!</h2>
+        <h2 class = "mb-4">You and <%= @booking.eaters - 1%> eaters will be enjoying <%= @booking.meal.name%> on: <br> <%= @booking.date.strftime("%B %e, %Y")%> from <%= @booking.meal.open_hrs.strftime('%l:%M%P')%> to <%= @booking.meal.close_hrs.strftime('%l:%M%P')%>!</h2>
         <h5>To be considerate of your Fooder, if you would like to edit or delete this booking please do so no later than 24 hours before the meal!</h5>
 
       <%elsif @booking.date < Date.today %>
