@@ -2,37 +2,57 @@
       <h1>Manage My Bookings</h1>
   </div>
 
-  <h2 class="text-center">Upcoming Bookings</h2>
+  <div class= "text-left m-5">
+      <h2>Upcoming Bookings</h2>
+  </div>
 
-  <div class="d-flex flex-row flex-wrap justify-content-center pb-4">
+  <div class="card-container-bookings">
     <% @bookings.each do |booking| %>
     <%if booking.date > Date.today %>
-      <div class="card border-secondary bg-dark color-white ml-3 mr-3 mb-3">
-          <%= cl_image_tag booking.meal.photos.first.key, height: 300, width: 400, crop: :lfill, class: 'card-img' %>
-        <div class="card-img-overlay d-flex flex-column justify-content-end">
-          <h5 class="card-title text-white"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-white font-weight-bold"%></h5>
-          <p class="card-title text-white"><%= booking.date %></p>
+    <div class="card-booking" id="bookings">
+      <%= cl_image_tag booking.meal.photos.first.key, class: 'card-image' if booking.meal.photos.size>0 %>
+      <div class= "d-flex flex-column align-items-between">
+        <div class="card-text">
+          <h4 class="card-title"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-dark font-weight-bold"%></h4>
+          <p class="card-title"><%= booking.date.strftime("%B %e, %Y")%> from <%= booking.meal.open_hrs.strftime('%l:%M%P')%> to <%= booking.meal.close_hrs.strftime('%l:%M%P')%></p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p><%= link_to "See Booking Details", booking_path(booking), class: "text-dark ml-3"%></p>
         </div>
       </div>
-    <%end%>
-    <%end%>
+    </div>
+    <% end %>
+    <% end %>
   </div>
 
-  <h2 class="text-center">Previous Bookings</h2>
 
-   <div class="d-flex flex-row flex-wrap justify-content-center pb-4">
+  <div class= "text-left m-5">
+      <h2>Previous Bookings</h2>
+  </div>
+
+   <div class="card-container-bookings">
     <% @bookings.each do |booking| %>
     <%if booking.date < Date.today %>
-      <div class="card border-secondary bg-dark color-white ml-3 mr-3 mb-3">
-        <%= cl_image_tag booking.meal.photos.first.key, height: 300, width: 400, crop: :lfill, class: 'card-img' %>
-        <div class="card-img-overlay d-flex flex-column justify-content-end">
-          <h5 class="card-title text-white"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-white font-weight-bold"%></h5>
-          <p class="card-title text-white"><%= booking.date %></p>
+    <div class="card-booking" id="bookings">
+      <%= cl_image_tag booking.meal.photos.first.key, class: 'card-image' if booking.meal.photos.size>0 %>
+      <div class= "d-flex flex-column align-items-between">
+        <div class="card-text">
+          <h4 class="card-title"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-dark font-weight-bold"%></h4>
+          <p class="card-title"><%= booking.date.strftime("%B %e, %Y")%> from <%= booking.meal.open_hrs.strftime('%l:%M%P')%> to <%= booking.meal.close_hrs.strftime('%l:%M%P')%></p>
+        </div>
+        <br>
+        <br>
+        <div>
+          <p><%= link_to "See Booking Details", booking_path(booking), class: "text-dark ml-3"%></p>
         </div>
       </div>
-    <%end%>
-    <%end%>
+    </div>
+    <% end %>
+    <% end %>
   </div>
+
 
 
 

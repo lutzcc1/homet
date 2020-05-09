@@ -6,6 +6,27 @@
   margin: 5px;
 }
 
+.card-container-bookings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px;
+  margin: 8px;
+}
+
+.card-booking {
+  display: flex;
+  flex-direction: row;
+  justify-content: between;
+  align-items: start;
+  width: 600px;
+  margin: 5px;
+  background-color: light-gray;
+  padding: 3px
+}
+
 .card {
   display: flex;
   flex-direction: row;
