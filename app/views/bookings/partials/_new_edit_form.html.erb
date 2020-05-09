@@ -1,18 +1,16 @@
-<div class = 'container'>
-  <%= simple_form_for @booking do |f| %>
-        <%= f.input :date, as: :date, html5: true, required: true %>
-        <%= f.time_select :time,
-            combined: true,
-            default: Time.now.change(hour: 12, min: 00),
-            minute_interval: 30,
-            time_separator: '',
-            start_hour: @open_hr[0].to_i,
-            start_minute: @open_hr[1].to_i,
-            end_hour: @close_hr[0].to_i,
-            end_minute: @close_hr[1].to_i,
-            ampm: true
-        %>
-        <%= f.input :eaters, collection: ((@booking.meal.min_eaters)..(@booking.meal.max_eaters)).to_a, required: true %>
-        <%= f.button :submit, class: 'btn btn-primary' %>
-  <%end%>
-</div>
+<%= simple_form_for @booking do |f| %>
+      <%= f.input :date, as: :date, html5: true, required: true %>
+      <%= f.time_select :time,
+          combined: true,
+          default: Time.now.change(hour: 12, min: 00),
+          minute_interval: 30,
+          time_separator: '',
+          start_hour: @open_hr[0].to_i,
+          start_minute: @open_hr[1].to_i,
+          end_hour: @close_hr[0].to_i,
+          end_minute: @close_hr[1].to_i,
+          ampm: true
+      %>
+      <%= f.input :eaters, collection: ((@booking.meal.min_eaters)..(@booking.meal.max_eaters)).to_a, required: true %>
+      <%= f.button :submit, class: 'btn btn-success' %>
+<%end%>

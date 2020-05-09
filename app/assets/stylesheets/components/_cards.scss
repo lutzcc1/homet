@@ -70,3 +70,12 @@
   border-top: thin solid #d3d3d3;
 }
 
+.booking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  margin-left: 48px;
+  margin-right: 48px;
+}
+
