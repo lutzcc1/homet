@@ -1,4 +1,8 @@
-<div class= 'container' style='list-style-type:none'>
+<div class= "text-left m-5">
+  <h1>Manage My Meals</h1>
+</div>
+
+<div class= 'card-container' style='list-style-type:none'>
   <% @meals.each do |meal| %>
     <div class="card" id="meals">
       <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
