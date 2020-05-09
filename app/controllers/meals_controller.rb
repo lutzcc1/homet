@@ -8,7 +8,6 @@ class MealsController < ApplicationController
       @query = params[:search]
     else
       @query = nil
-      #@meals = policy_scope(Meal)
       @meals = Meal.geocoded
       @markers = @meals.map do |meal|
         {lat: meal.latitude,

@@ -1,56 +1,56 @@
-<div class="d-flex flex-column align-items-center justify-content-center m-5">
+<div class="img-homepage">
+<div class="d-flex flex-column align-items-center justify-content-center m-4">
   <h1>All our Meals</h1>
 </div>
-
 <div class="container align-items-center">
   <%= form_tag root_path, method: :get do %>
-  <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class: "form-control" %>
-  <%#= text_field_tag :price, params[:price], placeholder: "Price", class: "form-control" %>
+  <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class:"form-control" %>
   <div class="d-flex flex-column align-items-center m-3">
   <input type="submit">
   </div>
   <% end %>
   </div>
-
-<div class="d-flex flex-column align-items-center m-5">
+<div class="d-flex flex-row justify-content-around ">
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> meals out of our <%= Meal.count %> on our website.</p>
       <% else %>
         <p>All <%= Meal.count %> meals.</p>
       <% end %>
 </div>
+  </div>
 
 
-<div class="d-flex flex-row justify-content-around m-4">
+<div class="d-flex flex-row justify-content-around ">
   <div class="card-container">
     <% @meals.each do |meal| %>
     <div class="card" id="meals">
       <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
      <div>
+      <div class="card-text">
        <h4><%= meal.name %></h4>
-        <p><%= meal.address %></p>
-        <i class="material-icons"> Min n° of eaters </i><span><%= meal.max_eaters %></span>
-        <i class="material-icons">Max n° of eaters </i><span><%= meal.min_eaters %></span>
-        <i class="material-icons mr-2">$</i> <%= meal.price %>
+        <p><%= link_to meal.address %></p>
+        <p><%= meal.min_eaters %></i>-<i><%= meal.max_eaters %> eaters</p>
+        <p>$</i> <%= meal.price %></p>
         <div class="meal-card-actions">
         <%= link_to 'More info', meal_path(meal) %>
         </div>
       </div>
+    </div>
   </div>
   <% end %>
 
   </div>
-
   <div
   id="map"
-  style="height: 600px; width: 100%"
+  style="height: 100vh; width: 100%"
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   data-markers="<%= @markers.to_json %>"
   ></div>
-
 </div>
 
-<p>© <%= Date.today.year %> Homet.</p>
+<div class="card-container">
+<p>  © <%= Date.today.year %> Homet.</p>
+</div>
 
 
 
