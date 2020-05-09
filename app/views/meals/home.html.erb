@@ -12,7 +12,7 @@
   </div>
 <div class="d-flex flex-row justify-content-around ">
       <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> meals out of our <%= Meal.count %> on our website</p>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @meals.count %> meals out of our <%= Meal.count %> on our website.</p>
       <% else %>
         <p>All <%= Meal.count %> meals.</p>
       <% end %>
