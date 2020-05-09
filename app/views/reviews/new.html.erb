@@ -2,7 +2,7 @@
   <h2>Tell us about your <%= @meal.name  %> meal experience! </h2>
     <br>
       <%= simple_form_for [@meal, @review] do |f| %>
-        <%= f.input :rating, collection: %w{0 1 2 3 4 5} %>
+        <%= f.input :rating, collection: [1, 2, 3, 4, 5], required: true %>
         <%= f.input :comment %>
 
         <%= f.submit class: 'btn btn-primary' %>
