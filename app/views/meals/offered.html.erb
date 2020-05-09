@@ -8,6 +8,12 @@
         <p><%= meal.min_eaters %></i>-<i><%= meal.max_eaters %> eaters</p>
         <p>$</i> <%= meal.price %></p>
         <div class="meal-card-actions">
+          <%= link_to 'Edit', edit_meal_path(meal) %> |
+          <%= link_to "Delete",
+                meal_path(meal),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %> |
+          <%= link_to 'View Eaters', eaters_for_meal_path(meal) %>
         </div>
       </div>
     </div>
