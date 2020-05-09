@@ -1,19 +1,16 @@
-<% @meals.each do |meal| %>
-  <div class="meals-card">
-    <div><%= link_to meal.name, meal_path(meal) %></div>
-    <div><%= meal.description %></div>
-    <div><%= meal.price %></div>
-    <div>Eaters signed up for your meal: <%= meal.bookings.count %></div>
-      <%= link_to 'Edit', edit_meal_path(meal) %> |
-      <%= link_to "Delete",
-                meal_path(meal),
-                method: :delete,
-                data: { confirm: "Are you sure?" } %> |
-      <%= link_to 'View Eaters', eaters_for_meal_path(meal) %>
+<div class= 'container' style='list-style-type:none'>
+  <% @meals.each do |meal| %>
+    <div class="card" id="meals">
+      <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
+      <div class="card-text">
+       <h4><%= meal.name %></h4>
+        <p><%= meal.address %></p>
+        <p><%= meal.min_eaters %></i>-<i><%= meal.max_eaters %> eaters</p>
+        <p>$</i> <%= meal.price %></p>
+        <div class="meal-card-actions">
+        </div>
+      </div>
     </div>
-    <hr>
-  </div>
-<% end %>
-
-<%= link_to 'Create New Meal', new_meal_path, class: "btn btn-outline-dark m-1"%>
-
+    <% end %>
+  <%= link_to 'Create New Meal', new_meal_path, class: "btn btn-outline-dark m-1"%>
+</div>
