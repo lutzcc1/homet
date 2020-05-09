@@ -1,4 +1,4 @@
-
+<div class='container' style='list-style-type:none'>
   <%= simple_form_for @meal do |f| %>
         <%= f.input :name, required: true %>
         <%= f.input :description, required: true %>
@@ -34,5 +34,6 @@
           include_hidden: false
         %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-        <%= f.button :submit %>
+        <%= f.button :submit, class: "btn btn-dark" %>
   <% end %>
+</div>
