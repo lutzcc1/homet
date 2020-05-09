@@ -7,7 +7,7 @@
   <div class="carousel-inner">
     <% @meal.photos.each_with_index do |photo, index| %>
       <div class="carousel-item <% if index == 0 %> active <% end %>">
-        <%= cl_image_tag photo.key, height: 755, width: 966, crop: :lfill, class: 'card-img d-block w-100', alt: "First slide" %>
+        <%= cl_image_tag photo.key, height: 400, width: 1264, crop: :fill, class: 'card-img d-block w-100', alt: "First slide" %>
       </div>
     <% end %>
   </div>

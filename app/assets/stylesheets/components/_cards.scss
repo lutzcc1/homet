@@ -32,7 +32,20 @@
 
 }
 
-// .img-homepage{
-// padding: 50px;
-// margin-bottom: 15px;
-// }
+.white-card{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 2px;
+  border-style: solid;
+  border-color: #d3d3d3;
+  border-width: thin;
+}
+
+.non-colored-card{
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  border-top: thin solid #d3d3d3;
+}
+
