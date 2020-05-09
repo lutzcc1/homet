@@ -1,5 +1,6 @@
-
+<div class='container' style='list-style-type:none'>
   <%= simple_form_for @meal do |f| %>
+
     <%= f.input :name, required: true %>
     <%= f.input :description, required: true %>
     <%= f.input :price, required: true %>
@@ -35,4 +36,41 @@
     %>
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit %>
+=======
+        <%= f.input :name, required: true %>
+        <%= f.input :description, required: true %>
+        <%= f.input :price, required: true %>
+        <%= f.input :address, required: true %>
+        <%= f.input :min_eaters, required: true %>
+        <%= f.input :max_eaters, required: true %>
+        <%= f.time_select :open_hrs,
+            combined: true,
+            default: Time.now.change(hour: 12, min: 00),
+            minute_interval: 30,
+            time_separator: '',
+            start_hour: 0,
+            start_minute: 0,
+            end_hour: 23,
+            end_minute: 30,
+            ampm: true
+        %>
+        <%= f.time_select :close_hrs,
+            combined: true,
+            default: Time.now.change(hour: 12, min: 00),
+            minute_interval: 30,
+            time_separator: '',
+            start_hour: 0,
+            start_minute: 0,
+            end_hour: 23,
+            end_minute: 30,
+            ampm: true
+        %>
+        <%= f.input :open_days,
+          collection: %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday],
+          as: :check_boxes,
+          include_hidden: false
+        %>
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%= f.button :submit, class: "btn btn-dark" %>
   <% end %>
+</div>
