@@ -9,13 +9,13 @@ class MealsController < ApplicationController
     else
       @query = nil
       @meals = Meal.geocoded
-      @markers = @meals.map do |meal|
+    end
+    @markers = @meals.map do |meal|
         {lat: meal.latitude,
          lng: meal.longitude,
          infoWindow: render_to_string(partial: "infowindow", locals: { meal: meal })
        }
-      end
-    end
+     end
     @meals = policy_scope(@meals)
   end
 
