@@ -14,9 +14,10 @@
   </head>
 
   <body>
+
+    <!-- navbar -->
     <nav class="navbar sticky-top navbar-expand-xl navbar-light bg-light d-flex justify-content-between">
       <%= link_to 'HomEt', root_path, class: "navbar-brand"%>
-
       <div class="navbar-nav d-flex flex-end flex-row-reverse align-items-center">
         <% if user_signed_in? then %>
             <%= link_to 'Manage My Meals', offered_meals_path, class: "nav-link"%>
@@ -31,8 +32,9 @@
             <%= link_to 'Log-in', new_user_session_path, class: "nav-link"%>
         <%end%>
       </div>
-
     </nav>
+    <!-- navbar -->
+
     <!-- flash messages for authentication -->
     <% if notice %>
       <div class="alert alert-info alert-dismissible" role="alert">
@@ -46,16 +48,26 @@
         <%= alert %>
       </div>
     <% end %>
-    <%= yield %>
-    <div class="footer">
-      <div class="footer-links">
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
+    <!-- flash messages for authentication -->
+
+    <div class="footer-wrapper">
+      <div>
+        <%= yield %>
       </div>
-      <div class="footer-copyright">
-        © <%= Date.today.year %> Homet.
+
+      <!-- footer -->
+      <div class="footer">
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        <div class="footer-copyright">
+          © <%= Date.today.year %> Homet.
+        </div>
       </div>
+      <!-- footer -->
     </div>
+
   </body>
 </html>
