@@ -13,7 +13,7 @@ class MealsController < ApplicationController
     @markers = @meals.map do |meal|
         {lat: meal.latitude,
          lng: meal.longitude,
-         infoWindow: render_to_string(partial: "infowindow", locals: { meal: meal })
+         infoWindow: render_to_string(partial: "meals/partials/infowindow", locals: { meal: meal })
        }
      end
     @meals = policy_scope(@meals)
