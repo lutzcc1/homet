@@ -16,20 +16,12 @@
   margin: 8px;
 }
 
-.card-booking {
-  display: flex;
-  flex-direction: row;
-  justify-content: between;
-  align-items: start;
-  width: 600px;
-  margin: 5px;
-  background-color: light-gray;
-  padding: 3px
+.meal-card.booking-card {
+  width: 500px;
 }
 
 .meal-card {
   display: flex;
-  flex-direction: row;
   align-items: start;
   width: 800px;
   margin: 5px;

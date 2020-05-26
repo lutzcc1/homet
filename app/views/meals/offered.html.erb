@@ -1,16 +1,18 @@
 <div class= "text-left m-5">
-  <h1>Manage My Meals</h1>
+  <h1>My Meals</h1>
 </div>
 
 <div class= 'card-container' style='list-style-type:none'>
   <% @meals.each do |meal| %>
-    <div class="card" id="meals">
-      <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
+    <div class='meal-card'>
+      <div class="img-container">
+        <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size > 0 %>
+      </div>
+
       <div class="card-text">
-       <h4><%= meal.name %></h4>
+        <h4><%= meal.name %></h4>
         <p><%= meal.address %></p>
         <p><%= meal.min_eaters %></i>-<i><%= meal.max_eaters %> eaters</p>
-        <p>$</i> <%= meal.price %></p>
         <div class="meal-card-actions">
           <%= link_to 'Edit', edit_meal_path(meal) %> |
           <%= link_to "Delete",
@@ -21,6 +23,7 @@
         </div>
       </div>
     </div>
-    <% end %>
+  <% end %>
+
   <%= link_to 'Create New Meal', new_meal_path, class: "btn btn-outline-dark m-1"%>
 </div>

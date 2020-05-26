@@ -1,57 +1,55 @@
-  <div class= "text-left m-5">
-      <h1>Manage My Bookings</h1>
+<div class="container">
+  <div class= "text-center m-5">
+      <h1>My Bookings</h1>
   </div>
 
   <div class= "text-left m-5">
-      <h2>Upcoming Bookings</h2>
+      <h2>Upcoming</h2>
   </div>
 
   <div class="card-container-bookings">
     <% @bookings.each do |booking| %>
-    <%if booking.date > Date.today %>
-    <div class="card-booking" id="bookings">
-      <%= cl_image_tag booking.meal.photos.first.key, class: 'card-image' if booking.meal.photos.size>0 %>
-      <div class= "d-flex flex-column align-items-between">
-        <div class="card-text">
-          <h4 class="card-title"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-dark font-weight-bold"%></h4>
-          <p class="card-title"><%= booking.date.strftime("%B %e, %Y")%> from <%= booking.meal.open_hrs.strftime('%l:%M%P')%> to <%= booking.meal.close_hrs.strftime('%l:%M%P')%></p>
-        </div>
-        <br>
-        <br>
-        <div>
-          <p><%= link_to "See Booking Details", booking_path(booking), class: "text-dark ml-3"%></p>
-        </div>
-      </div>
-    </div>
-    <% end %>
+      <%if booking.date > Date.today %>
+        <%= link_to booking_path(booking), class: 'meal-card booking-card' do %>
+          <div class="img-container">
+            <%= cl_image_tag booking.meal.photos.first.key, class: 'card-image' if booking.meal.photos.size > 0 %>
+          </div>
+
+          <div class="card-text">
+            <h4><%= booking.meal.name %></h4>
+            <p><%= booking.date.strftime("%B %e, %Y")%></p>
+            <p><%= booking.meal.address %></p>
+            <p><%= booking.eaters %> eaters</p>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 
 
   <div class= "text-left m-5">
-      <h2>Previous Bookings</h2>
+      <h2>Previous</h2>
   </div>
 
-   <div class="card-container-bookings">
+  <div class="card-container-bookings">
     <% @bookings.each do |booking| %>
-    <%if booking.date < Date.today %>
-    <div class="card-booking" id="bookings">
-      <%= cl_image_tag booking.meal.photos.first.key, class: 'card-image' if booking.meal.photos.size>0 %>
-      <div class= "d-flex flex-column align-items-between">
-        <div class="card-text">
-          <h4 class="card-title"><%= link_to "#{booking.meal.name}", booking_path(booking), class: "text-dark font-weight-bold"%></h4>
-          <p class="card-title"><%= booking.date.strftime("%B %e, %Y")%> from <%= booking.meal.open_hrs.strftime('%l:%M%P')%> to <%= booking.meal.close_hrs.strftime('%l:%M%P')%></p>
-        </div>
-        <br>
-        <br>
-        <div>
-          <p><%= link_to "See Booking Details", booking_path(booking), class: "text-dark ml-3"%></p>
-        </div>
-      </div>
-    </div>
-    <% end %>
+      <%if booking.date < Date.today %>
+        <%= link_to booking_path(booking), class: 'meal-card booking-card' do %>
+          <div class="img-container">
+            <%= cl_image_tag booking.meal.photos.first.key, class: 'card-image' if booking.meal.photos.size > 0 %>
+          </div>
+
+          <div class="card-text">
+            <h4><%= booking.meal.name %></h4>
+            <p><%= booking.date.strftime("%B %e, %Y")%></p>
+            <p><%= booking.meal.address %></p>
+            <p><%= booking.eaters %> eaters</p>
+          </div>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
+</div>
 
 
 
