@@ -27,30 +27,43 @@
   padding: 3px
 }
 
-.card {
+.meal-card {
   display: flex;
   flex-direction: row;
-  justify-content: between;
   align-items: start;
   width: 800px;
   margin: 5px;
-  padding: 3px;
   border-style: none;
+  color: black;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  background-color: white;
+  position: relative;
 }
 
-.card-image{
-  border-radius: 12px;
+.meal-card:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.img-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
   width: 280px;
-  height: 180px;
-  padding: 6px;
 }
 
+.card-image {
+  object-fit: cover;
+  height: inherit;
+  width: inherit;
+}
 
 .card-text{
-  margin-left: 15px;
+  margin-left: 295px;
   margin-top: 5px;
   align-items: start;
-
 }
 
 .white-card{

@@ -19,24 +19,25 @@
 <div class="d-flex flex-row justify-content-around ">
   <div class="card-container">
     <% @meals.each do |meal| %>
-    <div class="card" id="meals">
-      <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
-     <div>
-      <div class="card-text">
-       <h4><%= link_to meal.name, meal_path(meal), class: "adress-link" %></h4>
-        <p><%= meal.address %></p>
-        <p><%= meal.min_eaters %></i>-<i><%= meal.max_eaters %> eaters</p>
-        <p>$</i> <%= meal.price %></p>
-      </div>
-    </div>
-  </div>
-  <% end %>
+      <%= link_to meal_path(meal), class: 'meal-card' do %>
+        <div class="img-container">
+          <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size > 0 %>
+        </div>
 
+        <div class="card-text">
+          <h4 class="address-link"><%= meal.name %></h4>
+          <p><%= meal.address %></p>
+          <p><%= meal.min_eaters %>-<%= meal.max_eaters %> eaters</p>
+          <p>$<%= meal.price %></p>
+        </div>
+      <% end %>
+    <% end %>
   </div>
+
   <div
-  id="map"
-  style="height: 100vh; width: 100%"
-  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  data-markers="<%= @markers.to_json %>"
+    id="map"
+    style="height: 100vh; width: 100%"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-markers="<%= @markers.to_json %>"
   ></div>
 </div>
