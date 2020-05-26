@@ -1,46 +1,48 @@
 <div>
   <%= render 'meals/partials/carousel' %>
-  <div class= 'booking-container' style='list-style-type:none'>
-    <div class="row">
-      <div class="col-lg-8" >
-        <% if user_signed_in? && @meal_owner == current_user %>
-            <h3 class = 'mt-4'><%= @meal.name %><%= link_to '✎', edit_meal_path(@meal), class: 'text-decoration-none' %></h3>
-        <% else %>
-          <h3 class = 'mt-4'><%= @meal.name %></h3>
-        <% end %>
-        <span class='text text-secondary' ><%= @meal.min_eaters%>-<%= @meal.max_eaters %> Eaters </span><span class=' text text-secondary'> | Hosted by <%= @meal.user.name %></span>
-        <br><br>
-        <h5><%= @meal.description %></h5>
-        <li class='text-secondary'> Open <%= @open_days %>, from <%= @meal.open_hrs.strftime('%k:%M') %> to <%= @meal.close_hrs.strftime('%k:%M') %></li>
-        <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
+  <div class="container">
+    <div class= 'booking-container' style='list-style-type:none'>
+      <div class="row">
+        <div class="col-lg-8" >
+          <% if user_signed_in? && @meal_owner == current_user %>
+              <h3 class = 'mt-4'><%= @meal.name %><%= link_to '✎', edit_meal_path(@meal), class: 'text-decoration-none' %></h3>
+          <% else %>
+            <h3 class = 'mt-4'><%= @meal.name %></h3>
+          <% end %>
+          <span class='text text-secondary' ><%= @meal.min_eaters%>-<%= @meal.max_eaters %> Eaters </span><span class=' text text-secondary'> | Hosted by <%= @meal.user.name %></span>
+          <br><br>
+          <h5><%= @meal.description %></h5>
+          <li class='text-secondary'> Open <%= @open_days %>, from <%= @meal.open_hrs.strftime('%k:%M') %> to <%= @meal.close_hrs.strftime('%k:%M') %></li>
+          <li class='text-secondary'>At <%= @meal.address.split.map(&:capitalize).join(' ')%></li>
+        </div>
+        <div class="col-lg-4 mt-4" >
+          <div class="white-card">
+            <div class="card-body">
+              <% if user_signed_in? && @meal_owner == current_user %>
+                <p> You are the owner of this meal. <%= link_to 'See bookings', eaters_for_meal_path(@meal) %></p>
+              <% elsif user_signed_in? && @booking.user == current_user %>
+                <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
+              <% else  %>
+                <li> Book now! </li>
+                <%=  render 'booking_form' %>
+              <% end %>
+            </div>
+          <br></br>
+        </div>
       </div>
-      <div class="col-lg-4 mt-4" >
-        <div class="white-card">
-          <div class="card-body">
-            <% if user_signed_in? && @meal_owner == current_user %>
-              <p> You are the owner of this meal. <%= link_to 'See bookings', eaters_for_meal_path(@meal) %></p>
-            <% elsif user_signed_in? && @booking.user == current_user %>
-              <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
-            <% else  %>
-              <li> Book now! </li>
-              <%=  render 'booking_form' %>
-            <% end %>
+      <div class="row mx-1">
+        <div class= "col-lg-8" >
+          <div class="list-group">
+            <li class = "my-3">What have others said about <%= @meal.name %>?</li>
+              <% @meal.reviews.each do |review| %>
+                <div class = "non-colored-card">
+                  <li><%= review.user.name %></li>
+                  <p class="text-secondary" ><span>Rating:</span><span class="font-weight-bold" > <%= review.rating %></span></p>
+                  <p class="text-secondary" >"<%= review.comment %>"</p>
+                </div>
+              <% end %>
+            <li><%= link_to 'Back', root_path %></li>
           </div>
-        <br></br>
-      </div>
-    </div>
-    <div class="row mx-1">
-      <div class= "col-lg-8" >
-        <div class="list-group">
-          <li class = "my-3">What have others said about <%= @meal.name %>?</li>
-            <% @meal.reviews.each do |review| %>
-              <div class = "non-colored-card">
-                <li><%= review.user.name %></li>
-                <p class="text-secondary" ><span>Rating:</span><span class="font-weight-bold" > <%= review.rating %></span></p>
-                <p class="text-secondary" >"<%= review.comment %>"</p>
-              </div>
-            <% end %>
-          <li><%= link_to 'Back', root_path %></li>
         </div>
       </div>
     </div>
