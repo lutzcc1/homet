@@ -16,7 +16,7 @@
             <h4> Your comments: <%= @booking.meal.reviews.where(user_id:@booking.user.id).first.comment %> </h4>
           <% else %>
           <p> Please leave a review for <%=@booking.meal.user.name%> so they know how good their food was or how it could be better!</p>
-            <%=  render 'review_form' %>
+            <%=  render 'reviews/partials/review_form' %>
           <% end %>
       <%end%>
     </div>

@@ -1,6 +1,5 @@
-<div>
   <%= render 'meals/partials/carousel' %>
-  <div class="container">
+  <div class="container my-container">
     <div class= 'booking-container' style='list-style-type:none'>
       <div class="row">
         <div class="col-lg-8" >
@@ -26,7 +25,7 @@
                 <p> You already have <%= link_to 'a booking', booking_path(@booking) %> here </p>
               <% else  %>
                 <li> Book now! </li>
-                <%=  render 'booking_form' %>
+                <%=  render 'meals/partials/booking_form' %>
               <% end %>
             </div>
           <br></br>
@@ -49,6 +48,5 @@
       </div>
     </div>
   </div>
-</div>
 
 
