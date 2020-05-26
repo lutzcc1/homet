@@ -20,14 +20,15 @@
   <div class="card-container">
     <% @meals.each do |meal| %>
       <%= link_to meal_path(meal), class: 'meal-card' do %>
-        <div class="meal-card">
-          <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size>0 %>
-          <div class="card-text">
-            <h4 class="address-link"><%= meal.name %></h4>
-            <p><%= meal.address %></p>
-            <p><%= meal.min_eaters %></i>-<i><%= meal.max_eaters %> eaters</p>
-            <p>$</i> <%= meal.price %></p>
-          </div>
+        <div class="img-container">
+          <%= cl_image_tag meal.photos.first.key, class: 'card-image' if meal.photos.size > 0 %>
+        </div>
+
+        <div class="card-text">
+          <h4 class="address-link"><%= meal.name %></h4>
+          <p><%= meal.address %></p>
+          <p><%= meal.min_eaters %>-<%= meal.max_eaters %> eaters</p>
+          <p>$<%= meal.price %></p>
         </div>
       <% end %>
     <% end %>
