@@ -9,7 +9,9 @@
           <% else %>
             <h3 class = 'mt-4'><%= @meal.name %></h3>
           <% end %>
-          <span class='text text-secondary' ><%= @meal.min_eaters%>-<%= @meal.max_eaters %> Eaters </span><span class=' text text-secondary'> | Hosted by <%= @meal.user.name %></span>
+          <span class=' text text-secondary'>Hosted by <%= @meal.user.name %></span>
+          <br>
+          <span class='text text-secondary' ><i class="fas fa-user-friends"></i> <%= @meal.min_eaters%>-<%= @meal.max_eaters %> | $ <%= @meal.price %></span>
           <br><br>
           <h5><%= @meal.description %></h5>
           <li class='text-secondary'> Open <%= @open_days %>, from <%= @meal.open_hrs.strftime('%k:%M') %> to <%= @meal.close_hrs.strftime('%k:%M') %></li>
