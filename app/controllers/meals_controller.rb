@@ -17,6 +17,7 @@ class MealsController < ApplicationController
        }
      end
     @meals = policy_scope(@meals)
+    render layout: 'full_width'
   end
 
 
@@ -46,6 +47,7 @@ class MealsController < ApplicationController
       @first_days = @meal.open_days.take(@days - 1) * "s, "
       @open_days = "on #{@first_days}s and #{@last_day}s"
     end
+    render layout: 'full_width'
   end
 
   def offered
