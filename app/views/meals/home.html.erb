@@ -1,18 +1,18 @@
 <div class="hero-image">
 
-    <div class="hero-text">
-      <h1>All our Meals</h1>
+  <div class="hero-text">
+    <h1>All our Meals</h1>
 
-    <div class="card-container-search">
-      <div class="align-items-center">
-        <%= form_tag root_path, method: :get do %>
-        <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class:"form-control" %>
-      </div>
-      <div>
-        <%= submit_tag "Search", class: "search-button"%>
-      </div>
-      <% end %>
-       </div>
+  <div class="card-container-search">
+    <div class="align-items-center">
+      <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], placeholder: "What local meal are you looking to experience?", class:"form-control" %>
+    </div>
+    <div>
+      <%= submit_tag "Search", class: "search-button"%>
+    </div>
+    <% end %>
+     </div>
   </div>
 </div>
 
@@ -39,4 +39,5 @@
   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   data-markers="<%= @markers.to_json %>"
   ></div>
+
 </div>
