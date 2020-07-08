@@ -32,13 +32,12 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 import { initMapbox } from '../plugins/init_mapbox';
 
-initMapbox();
-initAutocomplete();
-
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+  initAutocomplete();
   // Call your functions here, e.g:
   // initSelect2();
 });
